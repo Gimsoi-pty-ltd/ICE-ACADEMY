@@ -16,6 +16,8 @@ import {
 } from 'lucide-react'
 
 import './Home.css'
+import robotGrad from '../assets/robot-grad.png'
+
 
 const focusAreas = [
   {
@@ -134,10 +136,10 @@ export default function Home() {
                     Learning for a changing world
                   </p>
                 </div>
+            <div className="visual-heading-icon">
+               <GraduationCap size={23} />
+              </div>
 
-                <div className="visual-heading-icon">
-                  <GraduationCap size={23} />
-                </div>
               </div>
 
               <div className="visual-center">
@@ -145,8 +147,8 @@ export default function Home() {
                 <div className="visual-circle visual-circle-inner" />
 
                 <div className="visual-main-icon">
-                  <GraduationCap size={68} strokeWidth={1.4} />
-                </div>
+  <img src={robotGrad} alt="ICE Robot with graduation cap" style={{ width: '110px', height: '110px', objectFit: 'contain' }} />
+</div>
 
                 <div className="floating-icon floating-icon-top">
                   <Lightbulb size={21} />

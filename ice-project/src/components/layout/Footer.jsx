@@ -7,6 +7,7 @@ import {
   MapPin,
 } from 'lucide-react'
 import './Footer.css'
+import robotFooter from '../../assets/robot-footer.png'
 
 const footerLinks = [
   { label: 'Home', path: '/' },
@@ -28,8 +29,8 @@ export default function Footer() {
             <div className="ice-footer-brand">
               <Link to="/" className="ice-footer-logo">
                 <span className="ice-footer-logo-mark">
-                  <GraduationCap size={25} strokeWidth={1.8} />
-                </span>
+  <img src={robotFooter} alt="ICE Robot" style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
+</span>
 
                 <span className="ice-footer-logo-text">
                   ICE <strong>ACADEMY</strong>
