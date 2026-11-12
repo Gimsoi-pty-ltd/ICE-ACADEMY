@@ -1,0 +1,322 @@
+
+/* ===================================
+   ICE ACADEMY — PROFESSIONAL FOOTER
+=================================== */
+
+.ice-footer {
+  width: 100%;
+  background: #10131d;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.ice-footer-container {
+  width: min(1160px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Main footer */
+
+.ice-footer-main {
+  padding: 68px 0 62px;
+  border-top: 3px solid #dc2626;
+  background:
+    radial-gradient(
+      ellipse at 12% 100%,
+      rgba(220, 38, 38, 0.07),
+      transparent 40%
+    ),
+    #10131d;
+}
+
+.ice-footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr 1fr;
+  gap: 85px;
+}
+
+/* Brand section */
+
+.ice-footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.ice-footer-logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(220, 38, 38, 0.12);
+  color: #f05252;
+  transition: all 0.25s ease;
+}
+
+.ice-footer-logo:hover .ice-footer-logo-mark {
+  background: #dc2626;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.ice-footer-logo-text {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.ice-footer-logo-text strong {
+  color: #f05252;
+  font-weight: 800;
+}
+
+.ice-footer-slogan {
+  margin: 23px 0 9px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.2px;
+}
+
+.ice-footer-description {
+  max-width: 320px;
+  margin: 0;
+  color: #a5a9b6;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.ice-footer-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 21px;
+  color: #a5a9b6;
+  font-size: 11px;
+}
+
+.ice-footer-location svg {
+  color: #f05252;
+}
+
+/* Navigation */
+
+.ice-footer-navigation h3 {
+  margin: 5px 0 13px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ice-footer-heading-line {
+  display: block;
+  width: 29px;
+  height: 2px;
+  margin-bottom: 21px;
+  border-radius: 5px;
+  background: #dc2626;
+}
+
+.ice-footer-navigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ice-footer-navigation a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #a5a9b6;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ice-footer-navigation a svg {
+  opacity: 0;
+  color: #f05252;
+  transition: opacity 0.2s ease;
+}
+
+.ice-footer-navigation a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.ice-footer-navigation a:hover svg {
+  opacity: 1;
+}
+
+/* Contact section */
+
+.ice-footer-overline {
+  display: block;
+  margin-bottom: 13px;
+  color: #f05252;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.ice-footer-connect h3 {
+  max-width: 280px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.ice-footer-connect p {
+  max-width: 310px;
+  margin: 13px 0 0;
+  color: #a5a9b6;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.ice-footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 23px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #dc2626;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.ice-footer-contact-link svg {
+  color: #f05252;
+}
+
+.ice-footer-contact-link:hover {
+  gap: 16px;
+  color: #ff7777;
+}
+
+/* Bottom bar */
+
+.ice-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  background: #0b0d15;
+}
+
+.ice-footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 62px;
+}
+
+.ice-footer-bottom-inner p {
+  margin: 0;
+  color: #8e93a1;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.ice-footer-bottom-inner p span {
+  color: #b4b7c0;
+}
+
+.ice-footer-bottom-slogan {
+  font-size: 9px !important;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.ice-footer-bottom-slogan span {
+  padding: 0 5px;
+  color: #f05252 !important;
+}
+
+/* Accessibility */
+
+.ice-footer a:focus-visible {
+  outline: 2px solid #ff8585;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media (max-width: 900px) {
+  .ice-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 45px 55px;
+  }
+
+  .ice-footer-connect {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .ice-footer-main {
+    padding: 48px 0;
+  }
+
+  .ice-footer-container {
+    width: calc(100% - 36px);
+  }
+
+  .ice-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 38px 22px;
+  }
+
+  .ice-footer-brand,
+  .ice-footer-connect {
+    grid-column: 1 / -1;
+  }
+
+  .ice-footer-connect h3 {
+    font-size: 18px;
+  }
+
+  .ice-footer-bottom-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ice-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ice-footer-brand,
+  .ice-footer-connect {
+    grid-column: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ice-footer *,
+  .ice-footer *::before,
+  .ice-footer *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,38 +1,73 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import {
+  Menu,
+  X,
+  GraduationCap,
+  ArrowUpRight,
+} from 'lucide-react'
+import './Navbar.css'
 
 const navigation = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
+  { name: 'Home', path: '/', end: true },
+  { name: 'About Us', path: '/about' },
   { name: 'Programmes', path: '/programmes' },
   { name: 'Cohorts & Impact', path: '/impact' },
   { name: 'Learning', path: '/learning' },
   { name: 'Partnerships', path: '/partnerships' },
-  { name: 'Enterprise', path: '/enterprise' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Enterprise Development', path: '/enterprise development' },
+  { name: 'Contact Us', path: '/contact' },
 ]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold text-red-600">
-          ICE <span className="text-gray-900">Academy</span>
+    <header className="ice-navbar">
+      <nav className="ice-navbar-inner" aria-label="Main navigation">
+
+        {/* Brand */}
+        <Link
+          to="/"
+          className="ice-navbar-brand"
+          onClick={closeMenu}
+          aria-label="ICE Academy home"
+        >
+          <span className="ice-navbar-brand-icon">
+            <GraduationCap size={25} strokeWidth={1.8} />
+          </span>
+
+          <span className="ice-navbar-brand-name">
+            ICE <strong>Academy</strong>
+          </span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-6">
+        {/* Desktop navigation */}
+        <div className="ice-navbar-links">
           {navigation.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
+              end={item.end}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${
-                  isActive ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
-                }`
+                `ice-navbar-link ${isActive ? 'active' : ''}`
               }
             >
               {item.name}
@@ -40,45 +75,61 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Link
-          to="/portal"
-          className="hidden lg:block bg-red-600 text-white px-5 py-2.5 rounded-md hover:bg-red-700 transition"
-        >
-          Learner Portal
+        {/* Learner portal */}
+        <Link to="/portal" className="ice-navbar-portal">
+          <span>Learner Portal</span>
+          <ArrowUpRight size={15} />
         </Link>
 
+        {/* Mobile menu button */}
         <button
-          className="lg:hidden text-gray-900"
-          onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
+          className={`ice-navbar-toggle ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen((previous) => !previous)}
           aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
           aria-expanded={menuOpen}
+          aria-controls="ice-mobile-navigation"
         >
-          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          {menuOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
       </nav>
 
-      {menuOpen && (
-        <div className="lg:hidden bg-white border-t px-6 py-4 space-y-4">
+      {/* Mobile navigation */}
+      <div
+        id="ice-mobile-navigation"
+        className={`ice-mobile-navigation ${menuOpen ? 'visible' : ''}`}
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
+      >
+        <div className="ice-mobile-navigation-inner">
+          <span className="ice-mobile-label">MENU</span>
+
           {navigation.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
-              onClick={() => setMenuOpen(false)}
-              className="block text-gray-700 hover:text-red-600"
+              end={item.end}
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                `ice-mobile-link ${isActive ? 'active' : ''}`
+              }
             >
               {item.name}
+              <ArrowUpRight size={15} />
             </NavLink>
           ))}
 
           <Link
             to="/portal"
-            onClick={() => setMenuOpen(false)}
-            className="block text-red-600 font-semibold"
+            onClick={closeMenu}
+            className="ice-mobile-portal"
           >
+            <GraduationCap size={18} />
             Learner Portal
+            <ArrowUpRight size={16} />
           </Link>
         </div>
-      )}
+      </div>
     </header>
   )
 }

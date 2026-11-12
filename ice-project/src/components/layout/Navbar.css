@@ -1,0 +1,351 @@
+
+/* ==================================
+   ICE ACADEMY — NAVIGATION
+================================== */
+
+.ice-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #ededf0;
+  box-shadow: 0 3px 14px rgba(15, 20, 35, 0.035);
+  backdrop-filter: blur(12px);
+}
+
+.ice-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  width: min(1440px, calc(100% - 52px));
+  min-height: 76px;
+  margin: 0 auto;
+}
+
+/* Brand */
+
+.ice-navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 10px;
+  color: #171923;
+  text-decoration: none;
+}
+
+.ice-navbar-brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 10px;
+  background: #fff0f0;
+  color: #dc2626;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.ice-navbar-brand:hover .ice-navbar-brand-icon {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.ice-navbar-brand-name {
+  color: #171923;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.ice-navbar-brand-name strong {
+  color: #dc2626;
+  font-weight: 800;
+}
+
+/* Desktop links */
+
+.ice-navbar-links {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.25vw, 19px);
+  min-width: 0;
+}
+
+.ice-navbar-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 76px;
+  color: #555967;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ice-navbar-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  height: 2px;
+  border-radius: 5px;
+  background: #dc2626;
+  content: '';
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
+}
+
+.ice-navbar-link:hover,
+.ice-navbar-link.active {
+  color: #dc2626;
+}
+
+.ice-navbar-link:hover::after,
+.ice-navbar-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Learner portal */
+
+.ice-navbar-portal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 9px;
+  min-height: 41px;
+  padding: 0 16px;
+  border: 1px solid #dc2626;
+  border-radius: 6px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.22s ease, transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.ice-navbar-portal:hover {
+  transform: translateY(-2px);
+  background: #b91c1c;
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.2);
+}
+
+/* Mobile toggle */
+
+.ice-navbar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border: 1px solid #e8e8ec;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #202230;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ice-navbar-toggle:hover,
+.ice-navbar-toggle.open {
+  background: #fff0f0;
+  color: #dc2626;
+}
+
+/* Mobile navigation */
+
+.ice-mobile-navigation {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  max-height: calc(100vh - 76px);
+  overflow-y: auto;
+  border-top: 1px solid #ededf0;
+  background: #ffffff;
+  box-shadow: 0 12px 25px rgba(15, 20, 35, 0.1);
+}
+
+.ice-mobile-navigation-inner {
+  display: flex;
+  flex-direction: column;
+  width: min(100% - 40px, 540px);
+  padding: 22px 0 25px;
+  margin: 0 auto;
+}
+
+.ice-mobile-label {
+  margin-bottom: 12px;
+  color: #dc2626;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.ice-mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 5px;
+  border-bottom: 1px solid #f0f0f2;
+  color: #454958;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, padding 0.2s ease;
+}
+
+.ice-mobile-link svg {
+  color: #b0b2bc;
+}
+
+.ice-mobile-link:hover,
+.ice-mobile-link.active {
+  padding-left: 10px;
+  color: #dc2626;
+}
+
+.ice-mobile-link.active svg {
+  color: #dc2626;
+}
+
+.ice-mobile-portal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 45px;
+  margin-top: 20px;
+  border-radius: 6px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.ice-mobile-portal:hover {
+  background: #b91c1c;
+}
+
+.ice-mobile-navigation.visible {
+  display: block;
+  animation: ice-menu-enter 0.22s ease;
+}
+
+@keyframes ice-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility */
+
+.ice-navbar a:focus-visible,
+.ice-navbar button:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 4px;
+}
+
+/* ==================================
+   RESPONSIVE NAVIGATION
+================================== */
+
+/* Hide desktop navigation before links become cramped */
+@media (max-width: 1150px) {
+  .ice-navbar-inner {
+    width: calc(100% - 36px);
+    gap: 14px;
+  }
+
+  .ice-navbar-links {
+    gap: 10px;
+  }
+
+  .ice-navbar-link {
+    font-size: 10px;
+  }
+
+  .ice-navbar-brand-name {
+    font-size: 17px;
+  }
+
+  .ice-navbar-portal {
+    padding: 0 11px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .ice-navbar-inner {
+    min-height: 68px;
+  }
+
+  .ice-navbar-links,
+  .ice-navbar-portal {
+    display: none;
+  }
+
+  .ice-navbar-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .ice-mobile-navigation {
+    display: none;
+  }
+
+  .ice-mobile-navigation.visible {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .ice-navbar-inner {
+    width: calc(100% - 30px);
+    min-height: 64px;
+  }
+
+  .ice-navbar-brand-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .ice-navbar-brand-name {
+    font-size: 17px;
+  }
+
+  .ice-mobile-navigation {
+    max-height: calc(100vh - 64px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ice-navbar *,
+  .ice-navbar *::before,
+  .ice-navbar *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
