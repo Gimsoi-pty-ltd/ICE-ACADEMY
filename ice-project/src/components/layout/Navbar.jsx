@@ -44,20 +44,30 @@ export default function Navbar() {
       <nav className="ice-navbar-inner" aria-label="Main navigation">
 
         {/* Brand */}
-        <Link
-          to="/"
-          className="ice-navbar-brand"
-          onClick={closeMenu}
-          aria-label="ICE Academy home"
-        >
-          <span className="ice-navbar-brand-icon">
-            <GraduationCap size={25} strokeWidth={1.8} />
-          </span>
+    <Link
+  to="/"
+  className="ice-navbar-brand"
+  onClick={closeMenu}
+  aria-label="ICE Academy home"
+>
+  <span className="ice-navbar-brand-icon">
+    <img src="/favicon.webp" alt="ICE Academy logo" />
+  </span>
 
-          <span className="ice-navbar-brand-name">
-            ICE <strong>Academy</strong>
-          </span>
-        </Link>
+  <span className="ice-navbar-brand-name">
+    <span className="ice-brand-top">
+      <strong>Industrial</strong>
+    </span>
+
+    <span className="ice-brand-middle">
+      Computing Engineering
+    </span>
+
+    <span className="ice-brand-bottom">
+      <strong>ACADEMY</strong>
+    </span>
+  </span>
+</Link>
 
         {/* Desktop navigation */}
         <div className="ice-navbar-links">
