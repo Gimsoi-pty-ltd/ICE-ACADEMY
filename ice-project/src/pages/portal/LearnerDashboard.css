@@ -1,0 +1,579 @@
+
+/* =========================================
+   ICE ACADEMY — LEARNING PAGE
+   Professional Institutional Design
+========================================= */
+
+.learning-page {
+  width: 100%;
+  overflow: hidden;
+  color: #171923;
+  background: #ffffff;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.learning-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 24px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(220, 38, 38, 0.16), transparent 30%),
+    linear-gradient(120deg, #101827 0%, #171923 65%, #252b3b 100%);
+  color: #ffffff;
+}
+
+.learning-hero::after {
+  content: '';
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -120px;
+  bottom: -190px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px rgba(255,255,255,0.025),
+    0 0 0 70px rgba(255,255,255,0.02);
+  pointer-events: none;
+}
+
+.learning-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.learning-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.learning-eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: #dc2626;
+}
+
+.learning-hero h1 {
+  max-width: 800px;
+  margin-top: 24px;
+  color: #ffffff;
+  font-size: clamp(38px, 5.5vw, 66px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.learning-hero p {
+  max-width: 650px;
+  margin-top: 24px;
+  color: #cbd0dc;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.learning-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 25px;
+  border: 1px solid #dc2626;
+  border-radius: 6px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.learning-btn:hover {
+  transform: translateY(-3px);
+  background: #b91c1c;
+  border-color: #b91c1c;
+  box-shadow: 0 8px 22px rgba(220, 38, 38, 0.25);
+}
+
+/* =========================================
+   GENERAL SECTION STYLING
+========================================= */
+
+.learning-section {
+  padding: 95px 24px;
+}
+
+.learning-section-heading {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.learning-section-heading h2 {
+  margin-top: 14px;
+  color: #171923;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.learning-section-heading p {
+  margin-top: 16px;
+  color: #666b78;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   LEARNING FEATURE CARDS
+========================================= */
+
+.learning-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.learning-feature-card {
+  position: relative;
+  padding: 34px 30px;
+  border: 1px solid #e8e9ed;
+  border-radius: 10px;
+  background: #ffffff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.learning-feature-card:hover {
+  transform: translateY(-7px);
+  border-color: #f2b4b4;
+  box-shadow: 0 16px 35px rgba(20, 25, 40, 0.09);
+}
+
+.learning-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #fff1f1;
+  color: #dc2626;
+  transition: all 0.3s ease;
+}
+
+.learning-feature-card:hover .learning-feature-icon {
+  background: #dc2626;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.learning-feature-card h2 {
+  margin-top: 25px;
+  color: #171923;
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.learning-feature-card p {
+  margin-top: 14px;
+  color: #686d79;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.learning-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.learning-feature-link:hover {
+  gap: 14px;
+  color: #991b1b;
+}
+
+/* =========================================
+   FAQ SECTION
+========================================= */
+
+.learning-faq-section {
+  padding: 95px 24px;
+  background: #f7f8fa;
+}
+
+.learning-faq-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.learning-faq-heading {
+  margin-bottom: 35px;
+}
+
+.learning-faq-heading h2 {
+  margin-top: 14px;
+  color: #171923;
+  font-size: clamp(28px, 3.5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.learning-faq-heading p {
+  margin-top: 14px;
+  color: #686d79;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Search */
+
+.learning-faq-search {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.learning-faq-search input {
+  width: 100%;
+  min-height: 58px;
+  padding: 0 50px;
+  border: 1px solid #dedfe5;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: #171923;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.learning-faq-search input:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.learning-faq-search input::placeholder {
+  color: #a0a3ad;
+}
+
+.learning-faq-search .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  color: #9296a2;
+  transform: translateY(-50%);
+}
+
+.learning-faq-search .clear-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #777c89;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+/* Results count */
+
+.learning-faq-count {
+  margin-bottom: 16px;
+  color: #858a96;
+  font-size: 13px;
+}
+
+/* FAQ cards */
+
+.learning-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.learning-faq-item {
+  padding: 23px 25px;
+  border: 1px solid #e5e6eb;
+  border-radius: 9px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.learning-faq-item:hover {
+  border-color: #f1b2b2;
+  box-shadow: 0 5px 15px rgba(20, 25, 40, 0.04);
+}
+
+.learning-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #202332;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.learning-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.learning-faq-item summary > span:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff1f1;
+  color: #dc2626;
+  font-size: 23px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.learning-faq-item[open] summary > span:last-child {
+  transform: rotate(45deg);
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.learning-faq-item p {
+  margin-top: 18px;
+  padding-top: 17px;
+  border-top: 1px solid #f0f0f2;
+  color: #686d79;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* Empty search state */
+
+.learning-faq-empty {
+  padding: 45px 25px;
+  border: 1px solid #e5e6eb;
+  border-radius: 9px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.learning-faq-empty h3 {
+  margin-top: 15px;
+  color: #202332;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.learning-faq-empty p {
+  margin-top: 10px;
+  color: #777c89;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.learning-faq-empty button {
+  margin-top: 20px;
+  border: none;
+  background: transparent;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================
+   CONTACT CTA
+========================================= */
+
+.learning-contact-section {
+  padding: 75px 24px;
+  background: #ffffff;
+}
+
+.learning-contact-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 50px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(220, 38, 38, 0.14), transparent 35%),
+    linear-gradient(120deg, #111827, #202536);
+  color: #ffffff;
+}
+
+.learning-contact-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 17px;
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.learning-contact-box h2 {
+  max-width: 600px;
+  color: #ffffff;
+  font-size: clamp(23px, 3vw, 34px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.learning-contact-box p {
+  margin-top: 13px;
+  color: #cbd0dc;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.learning-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-height: 49px;
+  padding: 0 24px;
+  border-radius: 6px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.learning-contact-btn:hover {
+  transform: translateY(-3px);
+  background: #b91c1c;
+  box-shadow: 0 7px 20px rgba(220, 38, 38, 0.25);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+  .learning-hero {
+    padding: 85px 24px;
+  }
+
+  .learning-section,
+  .learning-faq-section {
+    padding: 75px 24px;
+  }
+
+  .learning-features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .learning-contact-box {
+    padding: 38px;
+  }
+}
+
+@media (max-width: 650px) {
+  .learning-hero {
+    padding: 75px 22px;
+  }
+
+  .learning-hero h1 {
+    font-size: 39px;
+    letter-spacing: -1.5px;
+  }
+
+  .learning-hero p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .learning-section,
+  .learning-faq-section {
+    padding: 65px 20px;
+  }
+
+  .learning-features-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .learning-feature-card {
+    padding: 28px 24px;
+  }
+
+  .learning-contact-section {
+    padding: 55px 20px;
+  }
+
+  .learning-contact-box {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 32px 25px;
+  }
+
+  .learning-contact-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .learning-hero h1 {
+    font-size: 34px;
+  }
+
+  .learning-faq-item {
+    padding: 19px 17px;
+  }
+
+  .learning-faq-item summary {
+    font-size: 14px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .learning-page *,
+  .learning-page *::before,
+  .learning-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

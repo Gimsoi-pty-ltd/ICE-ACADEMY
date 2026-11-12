@@ -1,0 +1,461 @@
+
+/* =====================================
+   ICE ACADEMY — LEARNER PORTAL LOGIN
+===================================== */
+
+.portal-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 85vh;
+  background: #ffffff;
+  color: #171923;
+  font-family: inherit;
+}
+
+/* =====================================
+   LEFT BRANDING PANEL
+===================================== */
+
+.portal-login-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255, 255, 255, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #991b1b, #dc2626 65%, #b91c1c);
+}
+
+.portal-brand-content {
+  width: 100%;
+  max-width: 500px;
+}
+
+.portal-brand-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 90px;
+}
+
+.portal-brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #dc2626;
+}
+
+.portal-brand-heading h2,
+.portal-mobile-brand h2 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.portal-brand-heading p,
+.portal-mobile-brand p {
+  margin: 4px 0 0;
+  color: #fee2e2;
+  font-size: 13px;
+}
+
+.portal-brand-message {
+  max-width: 480px;
+}
+
+.portal-eyebrow {
+  display: inline-block;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.portal-brand-message .portal-eyebrow {
+  color: #fecaca;
+}
+
+.portal-brand-message h1 {
+  margin: 22px 0 0;
+  font-size: clamp(38px, 4vw, 55px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.8px;
+}
+
+.portal-brand-message > p {
+  margin-top: 25px;
+  color: #fee2e2;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.portal-brand-footer {
+  margin-top: 75px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.portal-brand-footer p {
+  margin: 0;
+  color: #fee2e2;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* =====================================
+   RIGHT LOGIN SECTION
+===================================== */
+
+.portal-login-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 35px;
+  background: #ffffff;
+}
+
+.portal-login-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+.portal-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 75px;
+  color: #737784;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.portal-back-link:hover {
+  color: #dc2626;
+}
+
+/* =====================================
+   LOGIN HEADING
+===================================== */
+
+.portal-login-heading {
+  margin-bottom: 35px;
+}
+
+.portal-login-heading h2 {
+  margin: 13px 0 0;
+  color: #171923;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.portal-login-heading > p {
+  margin-top: 12px;
+  color: #777b87;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =====================================
+   MOBILE BRANDING
+===================================== */
+
+.portal-mobile-brand {
+  display: none;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 45px;
+}
+
+.portal-mobile-brand .portal-brand-icon {
+  width: 50px;
+  height: 50px;
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.portal-mobile-brand h2 {
+  color: #171923;
+  font-size: 20px;
+}
+
+.portal-mobile-brand p {
+  color: #777b87;
+}
+
+/* =====================================
+   FORM ELEMENTS
+===================================== */
+
+.portal-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.portal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.portal-form-group label {
+  color: #292d38;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.portal-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.portal-input-wrapper > svg {
+  position: absolute;
+  left: 16px;
+  color: #a0a3ad;
+  pointer-events: none;
+}
+
+.portal-input-wrapper input {
+  width: 100%;
+  min-height: 53px;
+  padding: 0 48px;
+  border: 1px solid #dedfe4;
+  border-radius: 7px;
+  outline: none;
+  background: #ffffff;
+  color: #171923;
+  font-family: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.portal-input-wrapper input::placeholder {
+  color: #a0a3ad;
+}
+
+.portal-input-wrapper input:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.portal-password-toggle {
+  position: absolute;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  color: #999da7;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.portal-password-toggle:hover {
+  color: #dc2626;
+}
+
+/* =====================================
+   STATUS MESSAGE
+===================================== */
+
+.portal-login-message {
+  padding: 13px 15px;
+  border: 1px solid #bfdbfe;
+  border-radius: 7px;
+  background: #eff6ff;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =====================================
+   SUBMIT BUTTON
+===================================== */
+
+.portal-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 53px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 7px;
+  background: #dc2626;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.portal-submit-button:hover {
+  transform: translateY(-2px);
+  background: #b91c1c;
+  box-shadow: 0 7px 18px rgba(220, 38, 38, 0.2);
+}
+
+.portal-submit-button:active {
+  transform: translateY(0);
+}
+
+/* =====================================
+   ASSISTANCE
+===================================== */
+
+.portal-login-assistance {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.portal-login-assistance p {
+  margin: 0;
+  color: #858894;
+  font-size: 13px;
+}
+
+.portal-login-assistance a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.portal-login-assistance a:hover {
+  color: #991b1b;
+  text-decoration: underline;
+}
+
+/* =====================================
+   COPYRIGHT
+===================================== */
+
+.portal-login-copyright {
+  margin-top: 65px;
+  color: #a0a3ad;
+  font-size: 11px;
+  text-align: center;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 1000px) {
+  .portal-login {
+    grid-template-columns: 42% 58%;
+  }
+
+  .portal-login-brand {
+    padding: 55px 35px;
+  }
+
+  .portal-brand-message h1 {
+    font-size: 39px;
+  }
+
+  .portal-brand-heading {
+    margin-bottom: 65px;
+  }
+
+  .portal-login-main {
+    padding: 55px 30px;
+  }
+}
+
+@media (max-width: 750px) {
+  .portal-login {
+    grid-template-columns: 1fr;
+    min-height: 85vh;
+  }
+
+  .portal-login-brand {
+    display: none;
+  }
+
+  .portal-login-main {
+    padding: 45px 25px 60px;
+  }
+
+  .portal-login-container {
+    max-width: 460px;
+  }
+
+  .portal-mobile-brand {
+    display: flex;
+  }
+
+  .portal-back-link {
+    margin-bottom: 40px;
+  }
+
+  .portal-login-heading h2 {
+    font-size: 31px;
+  }
+
+  .portal-login-copyright {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .portal-login-main {
+    padding: 35px 19px 45px;
+  }
+
+  .portal-mobile-brand {
+    margin-bottom: 35px;
+  }
+
+  .portal-login-heading h2 {
+    font-size: 28px;
+  }
+}
+
+/* =====================================
+   ACCESSIBILITY
+===================================== */
+
+.portal-login a:focus-visible,
+.portal-login button:focus-visible,
+.portal-login input:focus-visible {
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-login *,
+  .portal-login *::before,
+  .portal-login *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
