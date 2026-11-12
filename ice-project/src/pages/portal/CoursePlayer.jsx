@@ -13,11 +13,14 @@ import {
   FileText,
 } from 'lucide-react'
 
+import './CoursePlayer.css'
+
 const courseData = {
   1: {
     title: 'Introduction to Digital Skills',
     category: 'Digital Skills',
-    description: 'Explore essential digital knowledge and develop confidence using digital technologies.',
+    description:
+      'Explore essential digital knowledge and develop confidence using digital technologies.',
     lessons: [
       { title: 'Welcome to the course', duration: '5 min' },
       { title: 'Understanding digital skills', duration: '12 min' },
@@ -30,7 +33,8 @@ const courseData = {
   2: {
     title: 'Professional Development',
     category: 'Professional Growth',
-    description: 'Explore professional skills, workplace readiness and personal development.',
+    description:
+      'Explore professional skills, workplace readiness and personal development.',
     lessons: [
       { title: 'Welcome and introduction', duration: '5 min' },
       { title: 'Communication skills', duration: '12 min' },
@@ -42,7 +46,8 @@ const courseData = {
   3: {
     title: 'Introduction to Innovation',
     category: 'Innovation',
-    description: 'Discover creative thinking, problem-solving and innovation principles.',
+    description:
+      'Discover creative thinking, problem-solving and innovation principles.',
     lessons: [
       { title: 'Welcome to innovation', duration: '5 min' },
       { title: 'Understanding innovation', duration: '12 min' },
@@ -53,7 +58,8 @@ const courseData = {
   4: {
     title: 'Entrepreneurship Fundamentals',
     category: 'Entrepreneurship',
-    description: 'Explore entrepreneurial thinking and the foundations of business ideas.',
+    description:
+      'Explore entrepreneurial thinking and the foundations of business ideas.',
     lessons: [
       { title: 'Introduction to entrepreneurship', duration: '5 min' },
       { title: 'Identifying opportunities', duration: '12 min' },
@@ -73,16 +79,17 @@ export default function CoursePlayer() {
 
   if (!course) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Course not found</h1>
-          <p className="text-gray-500 mt-3">
+      <main className="course-not-found">
+        <div>
+          <GraduationCap size={45} className="not-found-icon" />
+
+          <h1>Course not found</h1>
+
+          <p>
             The course you are looking for does not exist in this demo.
           </p>
-          <Link
-            to="/portal/courses"
-            className="inline-block mt-6 bg-red-600 text-white px-6 py-3 rounded-md"
-          >
+
+          <Link to="/portal/courses" className="course-back-button">
             Back to courses
           </Link>
         </div>
@@ -92,6 +99,7 @@ export default function CoursePlayer() {
 
   const lesson = course.lessons[currentLesson]
   const totalLessons = course.lessons.length
+
   const progress = Math.round(
     (completedLessons.length / totalLessons) * 100
   )
@@ -100,7 +108,10 @@ export default function CoursePlayer() {
 
   function markComplete() {
     if (!isCompleted) {
-      setCompletedLessons((previous) => [...previous, currentLesson])
+      setCompletedLessons((previous) => [
+        ...previous,
+        currentLesson,
+      ])
     }
   }
 
@@ -117,88 +128,103 @@ export default function CoursePlayer() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="course-player">
+
       {/* Header */}
-      <header className="bg-gray-950 text-white px-5 md:px-8 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link
-            to="/portal/dashboard"
-            className="bg-red-600 p-2 rounded-lg"
-            aria-label="Learner dashboard"
-          >
-            <GraduationCap size={25} />
-          </Link>
-          <div>
-            <h1 className="font-bold">ICE Academy</h1>
-            <p className="text-xs text-gray-400">Course Player</p>
+      <header className="course-player-header">
+
+        <Link
+          to="/portal/dashboard"
+          className="course-header-brand"
+          aria-label="Learner dashboard"
+        >
+          <div className="course-header-icon">
+            <GraduationCap size={26} />
           </div>
-        </div>
+
+          <div>
+            <h1>ICE Academy</h1>
+            <p>Course Player</p>
+          </div>
+        </Link>
 
         <Link
           to="/portal/courses"
-          className="text-sm text-gray-300 hover:text-white"
+          className="course-header-back"
         >
           Back to My Courses
         </Link>
+
       </header>
 
-      <div className="flex relative">
+      <div className="course-player-layout">
+
         {/* Mobile overlay */}
         {sidebarOpen && (
           <button
+            className="course-sidebar-overlay"
             aria-label="Close lesson menu overlay"
             onClick={() => setSidebarOpen(false)}
-            className="fixed inset-0 bg-black/40 z-30 lg:hidden"
           />
         )}
 
         {/* Lesson sidebar */}
         <aside
-          className={`fixed lg:static top-0 bottom-0 left-0 z-40 w-80 bg-white border-r overflow-y-auto transform transition-transform duration-300 lg:translate-x-0 ${
-            sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          className={`course-sidebar ${
+            sidebarOpen ? 'sidebar-open' : ''
           }`}
         >
-          <div className="p-6 border-b flex justify-between items-center">
+
+          <div className="course-sidebar-heading">
+
             <div>
-              <p className="text-xs text-red-600 font-semibold">
+              <span className="course-section-label">
                 COURSE CONTENT
-              </p>
-              <h2 className="font-bold mt-2">{course.title}</h2>
+              </span>
+
+              <h2>{course.title}</h2>
             </div>
 
             <button
+              className="course-sidebar-close"
               onClick={() => setSidebarOpen(false)}
-              className="lg:hidden text-gray-500"
               aria-label="Close lesson menu"
             >
               <X size={22} />
             </button>
+
           </div>
 
-          <div className="p-6">
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-500">Course progress</span>
-              <span className="font-bold">{progress}%</span>
+          {/* Progress */}
+          <div className="course-progress-section">
+
+            <div className="course-progress-info">
+              <span>Course progress</span>
+              <strong>{progress}%</strong>
             </div>
 
-            <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+            <div className="course-progress-track">
               <div
-                className="bg-green-600 h-full rounded-full transition-all"
+                className="course-progress-fill"
                 style={{ width: `${progress}%` }}
               />
             </div>
 
-            <p className="text-xs text-gray-500 mt-2">
+            <p>
               {completedLessons.length} of {totalLessons} lessons completed
             </p>
+
           </div>
 
-          <div className="px-4 pb-6">
-            <p className="text-xs uppercase font-semibold text-gray-400 px-3 mb-3">
-              Lessons
+          {/* Lessons */}
+          <div className="course-lessons">
+
+            <p className="course-lessons-label">
+              LESSONS
             </p>
 
-            <div className="space-y-2">
+            <div className="course-lessons-list">
+
               {course.lessons.map((item, index) => {
                 const completed = completedLessons.includes(index)
                 const active = currentLesson === index
@@ -210,110 +236,134 @@ export default function CoursePlayer() {
                       setCurrentLesson(index)
                       setSidebarOpen(false)
                     }}
-                    className={`w-full flex items-start gap-3 p-3 rounded-lg text-left transition ${
-                      active
-                        ? 'bg-red-50 border border-red-200'
-                        : 'hover:bg-gray-50'
+                    className={`course-lesson-item ${
+                      active ? 'active' : ''
                     }`}
                   >
-                    <div className="mt-1">
+
+                    <div className="course-lesson-status">
                       {completed ? (
-                        <CheckCircle className="text-green-600" size={19} />
+                        <CheckCircle
+                          size={19}
+                          className="lesson-completed-icon"
+                        />
                       ) : (
                         <PlayCircle
-                          className={active ? 'text-red-600' : 'text-gray-400'}
                           size={19}
+                          className={
+                            active
+                              ? 'lesson-active-icon'
+                              : 'lesson-pending-icon'
+                          }
                         />
                       )}
                     </div>
 
-                    <div className="flex-1">
-                      <p
-                        className={`text-sm font-medium ${
-                          active ? 'text-red-700' : 'text-gray-800'
-                        }`}
-                      >
+                    <div className="course-lesson-details">
+
+                      <span className="course-lesson-title">
                         {index + 1}. {item.title}
-                      </p>
-                      <p className="text-xs text-gray-400 mt-1">
+                      </span>
+
+                      <span className="course-lesson-duration">
                         {item.duration}
-                      </p>
+                      </span>
+
                     </div>
+
                   </button>
                 )
               })}
+
             </div>
           </div>
+
         </aside>
 
         {/* Main lesson content */}
-        <main className="flex-1 min-w-0 p-5 md:p-8 lg:p-10">
-          <div className="max-w-5xl mx-auto">
+        <main className="course-main-content">
+
+          <div className="course-content-container">
+
+            {/* Mobile menu button */}
             <button
+              className="course-mobile-menu"
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden flex items-center gap-2 text-red-600 font-semibold mb-6"
             >
               <Menu size={20} />
               View lessons
             </button>
 
-            <div className="mb-7">
-              <p className="text-red-600 text-sm font-semibold">
+            {/* Course heading */}
+            <div className="course-page-heading">
+
+              <span className="course-category">
                 {course.category}
-              </p>
-              <h2 className="text-2xl md:text-3xl font-bold mt-2">
-                {course.title}
-              </h2>
-              <p className="text-gray-500 mt-3">{course.description}</p>
+              </span>
+
+              <h2>{course.title}</h2>
+
+              <p>{course.description}</p>
+
             </div>
 
             {/* Lesson display */}
-            <section className="bg-white border rounded-xl overflow-hidden">
-              <div className="bg-gray-950 text-white aspect-video flex flex-col items-center justify-center px-6 text-center">
-                <div className="bg-red-600 p-4 rounded-full mb-5">
-                  <BookOpen size={36} />
+            <section className="course-lesson-card">
+
+              <div className="course-video-placeholder">
+
+                <div className="course-video-icon">
+                  <BookOpen size={37} />
                 </div>
-                <p className="text-red-300 text-sm font-semibold">
+
+                <span className="course-video-label">
                   LESSON {currentLesson + 1} OF {totalLessons}
-                </p>
-                <h3 className="text-xl md:text-3xl font-bold mt-3">
-                  {lesson.title}
-                </h3>
-                <p className="text-gray-400 text-sm mt-3">
-                  Lesson content placeholder
-                </p>
+                </span>
+
+                <h3>{lesson.title}</h3>
+
+                <p>Lesson content placeholder</p>
+
               </div>
 
-              <div className="p-6 md:p-8">
-                <div className="flex items-center gap-2 text-gray-500 text-sm">
-                  <FileText size={17} />
+              {/* Lesson information */}
+              <div className="course-lesson-body">
+
+                <div className="course-lesson-meta">
+                  <FileText size={18} />
                   <span>{lesson.duration}</span>
                 </div>
 
-                <h3 className="text-xl font-bold mt-6">
-                  About this lesson
-                </h3>
+                <h3>About this lesson</h3>
 
-                <p className="text-gray-600 leading-8 mt-3">
-                  Welcome to this lesson. Use this learning space to explore
-                  the lesson material, understand the key concepts and build
-                  your knowledge step by step. Official lesson content and
-                  learning resources will be added when available.
+                <p className="course-lesson-description">
+                  Welcome to this lesson. Use this learning space to
+                  explore the lesson material, understand the key
+                  concepts and build your knowledge step by step.
+                  Official lesson content and learning resources
+                  will be added when available.
                 </p>
 
-                <div className="bg-gray-50 rounded-lg p-5 mt-6">
-                  <h4 className="font-semibold">Learning objective</h4>
-                  <p className="text-gray-600 text-sm leading-7 mt-2">
-                    Understand the main concepts introduced in this lesson
-                    and consider how they apply to your learning journey.
+                {/* Learning objective */}
+                <div className="course-learning-objective">
+
+                  <h4>Learning objective</h4>
+
+                  <p>
+                    Understand the main concepts introduced in this
+                    lesson and consider how they apply to your
+                    learning journey.
                   </p>
+
                 </div>
 
-                <div className="flex flex-col sm:flex-row justify-between gap-4 mt-8">
+                {/* Lesson navigation */}
+                <div className="course-lesson-actions">
+
                   <button
                     onClick={goToPrevious}
                     disabled={currentLesson === 0}
-                    className="border border-gray-300 px-5 py-3 rounded-md flex items-center justify-center gap-2 disabled:opacity-40 hover:bg-gray-50"
+                    className="course-action-button previous-button"
                   >
                     <ChevronLeft size={18} />
                     Previous lesson
@@ -322,13 +372,13 @@ export default function CoursePlayer() {
                   {!isCompleted ? (
                     <button
                       onClick={markComplete}
-                      className="bg-green-600 text-white px-5 py-3 rounded-md flex items-center justify-center gap-2 hover:bg-green-700"
+                      className="course-action-button complete-button"
                     >
                       <CheckCircle size={18} />
                       Mark as complete
                     </button>
                   ) : (
-                    <div className="text-green-700 font-semibold flex items-center justify-center gap-2">
+                    <div className="course-completed-message">
                       <CheckCircle size={19} />
                       Lesson completed
                     </div>
@@ -337,32 +387,40 @@ export default function CoursePlayer() {
                   <button
                     onClick={goToNext}
                     disabled={currentLesson === totalLessons - 1}
-                    className="bg-red-600 text-white px-5 py-3 rounded-md flex items-center justify-center gap-2 disabled:opacity-40 hover:bg-red-700"
+                    className="course-action-button next-button"
                   >
                     Next lesson
                     <ChevronRight size={18} />
                   </button>
+
                 </div>
+
               </div>
+
             </section>
 
+            {/* Course completion */}
             {completedLessons.length === totalLessons && (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-6">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="text-green-600" size={25} />
-                  <div>
-                    <h3 className="font-bold text-green-900">
-                      All demo lessons completed!
-                    </h3>
-                    <p className="text-green-800 text-sm mt-1">
-                      You have completed all the lessons in this sample course.
-                    </p>
-                  </div>
+              <div className="course-completion-banner">
+
+                <CheckCircle size={27} />
+
+                <div>
+                  <h3>All demo lessons completed!</h3>
+
+                  <p>
+                    You have completed all the lessons in this
+                    sample course.
+                  </p>
                 </div>
+
               </div>
             )}
+
           </div>
+
         </main>
+
       </div>
     </div>
   )
