@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react'
 import './Navbar.css'
+import robotLogo from '../../assets/robot-footer.png'
 
 const navigation = [
   { name: 'Home', path: '/', end: true },
@@ -51,8 +52,8 @@ export default function Navbar() {
   aria-label="ICE Academy home"
 >
   <span className="ice-navbar-brand-icon">
-    <img src="/favicon.webp" alt="ICE Academy logo" />
-  </span>
+  <img src={robotLogo} alt="ICE Academy logo" />
+</span>
 
   <span className="ice-navbar-brand-name">
     <span className="ice-brand-top">
