@@ -47,9 +47,14 @@ export default function Footer() {
               </p>
 
               <div className="ice-footer-location">
-                <MapPin size={15} />
-                <span>South Africa</span>
-              </div>
+                  <MapPin size={15} />
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=1059+Francis+Baard+Street+Hatfield+Pretoria"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  1059 Francis Baard Street, Hatfield, Pretoria
+              </a>
+            </div>
             </div>
 
             {/* Navigation */}
