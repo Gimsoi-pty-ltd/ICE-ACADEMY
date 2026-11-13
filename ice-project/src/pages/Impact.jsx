@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -14,6 +13,7 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import './Impact.css'
+import robotFooter from '../assets/robot-footer.png'
 
 const metrics = [
   {
@@ -105,12 +105,13 @@ export default function Impact() {
 
             <div className="impact-visual-card">
               <div className="impact-visual-icon">
-                <GraduationCap size={31} />
+                {/* ONLY THIS ONE CHANGED - cap to robot, and BIGGER */}
+                <img src={robotFooter} alt="ICE Academy robot" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
               </div>
-              <span className="impact-visual-small">THE ICE ACADEMY VISION</span>
-              <strong>Learning today. Opportunities tomorrow.</strong>
+              <span className="impact-visual-small" style={{ fontSize: '14px', letterSpacing: '1.5px' }}>THE ICE ACADEMY VISION</span>
+              <strong style={{ fontSize: '22px', lineHeight: '1.3' }}>Learning today. Opportunities tomorrow.</strong>
               <div className="impact-visual-line" />
-              <div className="impact-visual-footer">
+              <div className="impact-visual-footer" style={{ fontSize: '15px' }}>
                 <span>Learn</span>
                 <span>Grow</span>
                 <span>Innovate</span>
