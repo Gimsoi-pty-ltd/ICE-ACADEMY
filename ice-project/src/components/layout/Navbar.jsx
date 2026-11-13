@@ -17,7 +17,7 @@ const navigation = [
   { name: 'Cohorts & Impact', path: '/impact' },
   { name: 'Learning', path: '/learning' },
   { name: 'Partnerships', path: '/partnerships' },
-  { name: 'Enterprise Development', path: '/enterprise development' },
+  { name: 'Enterprise Development', path: '/enterprise' },
   { name: 'Contact Us', path: '/contact' },
 ]
 
