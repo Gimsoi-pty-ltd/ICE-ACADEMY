@@ -1,5 +1,4 @@
-
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Mail, MessageSquare, Send, CheckCircle2 } from 'lucide-react'
 import './Contact.css'
 
@@ -16,235 +15,163 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState({})
 
-  function handleSubmit(event) {
-    event.preventDefault()
-
-    const form = event.currentTarget
-    const formData = new FormData(form)
-
+  function handleSubmit(e) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const fd = new FormData(form)
     const data = {
-      fullName: String(formData.get('fullName') || '').trim(),
-      email: String(formData.get('email') || '').trim(),
-      phone: String(formData.get('phone') || '').trim(),
-      organisation: String(formData.get('organisation') || '').trim(),
-      category: String(formData.get('category') || ''),
-      message: String(formData.get('message') || '').trim(),
+      fullName: String(fd.get('fullName') || '').trim(),
+      email: String(fd.get('email') || '').trim(),
+      phone: String(fd.get('phone') || '').trim(),
+      organisation: String(fd.get('organisation') || '').trim(),
+      category: String(fd.get('category') || ''),
+      message: String(fd.get('message') || '').trim(),
     }
 
-    const newErrors = {}
+    const next = {}
+    if (data.fullName.length < 2) next.fullName = 'Please enter your full name (at least 2 characters).'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) next.email = 'Please enter a valid email address.'
+    const digits = data.phone.replace(/\D/g, '')
+    if (digits.length < 7 || digits.length > 15) next.phone = 'Please enter a valid contact number.'
+    if (!data.category) next.category = 'Please select an enquiry category.'
+    if (data.message.length < 10) next.message = 'Your message must contain at least 10 characters.'
 
-    if (data.fullName.length < 2)
-      newErrors.fullName = 'Please enter your full name.'
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
-      newErrors.email = 'Please enter a valid email address.'
-
-    const phoneDigits = data.phone.replace(/\D/g, '')
-
-    if (phoneDigits.length < 7 || phoneDigits.length > 15)
-      newErrors.phone = 'Please enter a valid contact number.'
-
-    if (!data.category)
-      newErrors.category = 'Please select an enquiry category.'
-
-    if (data.message.length < 10)
-      newErrors.message = 'Your message must contain at least 10 characters.'
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
+    if (Object.keys(next).length) {
+      setErrors(next)
       setSubmitted(false)
       return
     }
-
     setErrors({})
     setSubmitted(true)
     form.reset()
   }
 
+  function clearOnChange() {
+    setSubmitted(false)
+    setErrors({})
+  }
+
   return (
     <main className="contact-page">
-
+      {/* Hero Section */}
       <section className="contact-hero">
         <div className="contact-container">
           <span className="contact-eyebrow">GET IN TOUCH</span>
-
           <h1>We'd like to hear from you.</h1>
-
-          <p>
-            Contact ICE Academy with questions about programmes,
-            learning opportunities, partnerships or enterprise development.
+          <p className="contact-hero-description">
+            Contact ICE Academy with questions about programmes, learning
+            opportunities, partnerships or enterprise development.
           </p>
         </div>
       </section>
 
+      {/* Contact Section */}
       <section className="contact-section">
-        <div className="contact-container contact-grid">
-
-          <div className="contact-information">
-            <span className="contact-label">CONTACT ICE ACADEMY</span>
-
-            <h2>Send us an enquiry</h2>
-
-            <p className="contact-description">
-              Complete the form with your details and enquiry.
-              All required fields must be completed before submission.
-            </p>
-
-            <div className="contact-info-item">
-              <div className="contact-icon">
-                <Mail size={25} />
+        <div className="contact-container">
+          <div className="contact-grid">
+            
+            {/* Left Info */}
+            <div className="contact-info">
+              <span className="contact-eyebrow">CONTACT ICE ACADEMY</span>
+              <h2>Send us an enquiry</h2>
+              <p>
+                Complete the form with your details and enquiry. 
+                All required fields must be completed before submission.
+              </p>
+              
+              <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ff7777', marginBottom: '8px' }}>
+                    <Mail size={24} />
+                    <h3 style={{ margin: 0, fontSize: '20px', color: '#fff' }}>Email enquiries</h3>
+                  </div>
+                  <p style={{ margin: 0 }}>Contact details will be added once confirmed.</p>
+                </div>
+                
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ff7777', marginBottom: '8px' }}>
+                    <MessageSquare size={24} />
+                    <h3 style={{ margin: 0, fontSize: '20px', color: '#fff' }}>General enquiries</h3>
+                  </div>
+                  <p style={{ margin: 0 }}>Choose the category that best describes your enquiry.</p>
+                </div>
               </div>
-              <div>
-                <h3>Email enquiries</h3>
-                <p>Contact details will be added once confirmed.</p>
-              </div>
-            </div>
 
-            <div className="contact-info-item">
-              <div className="contact-icon">
-                <MessageSquare size={25} />
-              </div>
-              <div>
-                <h3>General enquiries</h3>
-                <p>
-                  Choose the category that best describes your enquiry.
+              <div style={{ marginTop: '48px', background: 'rgba(255,255,255,0.03)', padding: '32px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <h3 style={{ color: '#fff', margin: 0, fontSize: '20px' }}>How can we help?</h3>
+                <p style={{ marginTop: '12px', marginBottom: 0 }}>
+                  Whether you're interested in learning, development, entrepreneurship or partnerships, we're happy to hear from you.
                 </p>
               </div>
             </div>
 
-            <div className="contact-help-box">
-              <h3>How can we help?</h3>
-              <p>
-                Whether you're interested in learning, development,
-                entrepreneurship or partnerships, we're happy to hear
-                from you.
-              </p>
-            </div>
-          </div>
-
-          <div className="contact-form-card">
-
-            {submitted && (
-              <div className="contact-success" role="status">
-                <CheckCircle2 size={23} />
-                <div>
-                  <strong>Form completed successfully!</strong>
-                  <p>
-                    Your information passed validation. No enquiry has
-                    been sent or stored because this is currently a
-                    frontend prototype.
+            {/* Right Form */}
+            <div className="contact-card">
+              {submitted && (
+                <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', padding: '16px', borderRadius: '8px', marginBottom: '24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#34d399', fontWeight: 'bold' }}>
+                    <CheckCircle2 size={20} /> Enquiry form completed successfully!
+                  </div>
+                  <p style={{ color: '#a1a1aa', fontSize: '14px', marginTop: '8px', marginBottom: 0 }}>
+                    Your information passed validation. No information has been sent or stored because this is currently a frontend prototype.
                   </p>
                 </div>
-              </div>
-            )}
+              )}
 
-            {Object.keys(errors).length > 0 && (
-              <div className="contact-error-summary" role="alert">
-                Please correct the highlighted fields before submitting.
-              </div>
-            )}
+              {Object.keys(errors).length > 0 && (
+                <div style={{ background: 'rgba(220, 38, 38, 0.1)', border: '1px solid rgba(220, 38, 38, 0.2)', padding: '16px', borderRadius: '8px', marginBottom: '24px', color: '#fca5a5' }}>
+                  Please correct the highlighted fields before submitting.
+                </div>
+              )}
 
-            <form onSubmit={handleSubmit} noValidate>
+              <form onSubmit={handleSubmit} onChange={clearOnChange} noValidate>
+                <div className="contact-form-group">
+                  <label htmlFor="fullName">Full name *</label>
+                  <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
+                  {errors.fullName && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '6px' }}>{errors.fullName}</p>}
+                </div>
 
-              <div className="contact-field">
-                <label htmlFor="fullName">Full name *</label>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  autoComplete="name"
-                  placeholder="Enter your full name"
-                  aria-invalid={!!errors.fullName}
-                />
-                {errors.fullName && <span className="field-error">{errors.fullName}</span>}
-              </div>
+                <div className="contact-form-group">
+                  <label htmlFor="email">Email address *</label>
+                  <input id="email" name="email" type="email" placeholder="Enter your email address" required />
+                  {errors.email && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '6px' }}>{errors.email}</p>}
+                </div>
 
-              <div className="contact-field">
-                <label htmlFor="email">Email address *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="Enter your email address"
-                  aria-invalid={!!errors.email}
-                />
-                {errors.email && <span className="field-error">{errors.email}</span>}
-              </div>
+                <div className="contact-form-group">
+                  <label htmlFor="phone">Contact number *</label>
+                  <input id="phone" name="phone" type="tel" placeholder="e.g. 0712345678" required />
+                  {errors.phone && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '6px' }}>{errors.phone}</p>}
+                </div>
 
-              <div className="contact-field">
-                <label htmlFor="phone">Contact number *</label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  placeholder="e.g. 0712345678"
-                  maxLength={20}
-                  aria-invalid={!!errors.phone}
-                  onChange={(event) => {
-                    event.target.value = event.target.value.replace(
-                      /[^0-9+() -]/g, ''
-                    )
-                  }}
-                />
-                {errors.phone && <span className="field-error">{errors.phone}</span>}
-              </div>
+                <div className="contact-form-group">
+                  <label htmlFor="organisation">Organisation (optional)</label>
+                  <input id="organisation" name="organisation" type="text" placeholder="Your organisation" />
+                </div>
 
-              <div className="contact-field">
-                <label htmlFor="organisation">Organisation (optional)</label>
-                <input
-                  id="organisation"
-                  name="organisation"
-                  type="text"
-                  autoComplete="organization"
-                  placeholder="Your organisation"
-                />
-              </div>
+                <div className="contact-form-group">
+                  <label htmlFor="category">Enquiry category *</label>
+                  <select id="category" name="category" defaultValue="" required>
+                    <option value="" disabled>Select an enquiry category</option>
+                    {enquiryCategories.map((cat) => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                  {errors.category && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '6px' }}>{errors.category}</p>}
+                </div>
 
-              <div className="contact-field">
-                <label htmlFor="category">Enquiry category *</label>
-                <select
-                  id="category"
-                  name="category"
-                  defaultValue=""
-                  aria-invalid={!!errors.category}
-                >
-                  <option value="" disabled>
-                    Select an enquiry category
-                  </option>
-                  {enquiryCategories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-                {errors.category && <span className="field-error">{errors.category}</span>}
-              </div>
+                <div className="contact-form-group">
+                  <label htmlFor="message">Message *</label>
+                  <textarea id="message" name="message" rows={5} placeholder="Write your enquiry here..." required />
+                  {errors.message && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '6px' }}>{errors.message}</p>}
+                </div>
 
-              <div className="contact-field">
-                <label htmlFor="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  maxLength={2000}
-                  placeholder="Write your enquiry here..."
-                  aria-invalid={!!errors.message}
-                />
-                {errors.message && <span className="field-error">{errors.message}</span>}
-              </div>
+                <button type="submit" className="contact-btn">
+                  Submit enquiry <Send size={18} />
+                </button>
+                <p style={{ textAlign: 'center', fontSize: '12px', color: '#a1a1aa', marginTop: '16px' }}>* Required fields</p>
+              </form>
+            </div>
 
-              <button type="submit" className="contact-submit">
-                Submit enquiry
-                <Send size={18} />
-              </button>
-
-              <p className="contact-required-note">
-                * Required fields
-              </p>
-
-            </form>
           </div>
         </div>
       </section>

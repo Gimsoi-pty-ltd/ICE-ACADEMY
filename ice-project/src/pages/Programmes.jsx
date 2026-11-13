@@ -1,5 +1,4 @@
-
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import {
   Code,
   BriefcaseBusiness,
@@ -7,7 +6,6 @@ import {
   Lightbulb,
   ArrowRight,
   CheckCircle2,
-  GraduationCap,
 } from 'lucide-react'
 import './Programmes.css'
 
@@ -61,52 +59,29 @@ const programmes = [
 export default function Programmes() {
   return (
     <main className="programmes-page">
-
       {/* Hero Section */}
       <section className="programmes-hero">
         <div className="programmes-container">
-          <div className="programmes-hero-content">
-
-            <div className="programmes-label">
-              <GraduationCap size={18} />
-              WHAT WE EXPLORE
-            </div>
-
-            <h1>
-              Learning pathways for a changing world.
-            </h1>
-
-            <p className="programmes-hero-description">
-              Discover the programme areas that shape the ICE Academy
-              learning vision. Explore opportunities to develop skills,
-              build knowledge and prepare for the future.
-            </p>
-
-            <Link
-              to="/contact"
-              className="programmes-primary-button"
-            >
-              Make an enquiry
-              <ArrowRight size={18} />
-            </Link>
-
-          </div>
+          <span className="programmes-eyebrow">WHAT WE EXPLORE</span>
+          <h1>Learning pathways for a changing world.</h1>
+          <p className="programmes-hero-description">
+            Discover the programme areas that shape the ICE Academy
+            learning vision. Explore opportunities to develop skills,
+            build knowledge and prepare for the future.
+          </p>
+          <Link to="/contact" className="programmes-btn">
+            Make an enquiry
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
       {/* Programme Areas */}
       <section className="programmes-section">
         <div className="programmes-container">
-
           <div className="programmes-section-heading">
-            <p className="programmes-eyebrow">
-              OUR PROGRAMME AREAS
-            </p>
-
-            <h2>
-              Develop skills. Discover opportunities.
-            </h2>
-
+            <span className="programmes-label">OUR PROGRAMME AREAS</span>
+            <h2>Develop skills. Discover opportunities.</h2>
             <p>
               Explore our proposed areas of learning and development.
               Specific courses and opportunities will be published once
@@ -117,33 +92,20 @@ export default function Programmes() {
           <div className="programmes-grid">
             {programmes.map((programme) => {
               const Icon = programme.icon
-
               return (
-                <article
-                  key={programme.title}
-                  className="programme-card"
-                >
-                  <div className="programme-icon-box">
-                    <Icon size={27} aria-hidden="true" />
-                  </div>
-
+                <article key={programme.title} className="programmes-card">
+                  <Icon size={32} className="programmes-card-icon" />
                   <h3>{programme.title}</h3>
-
-                  <p className="programme-card-description">
-                    {programme.description}
-                  </p>
-
-                  <div className="programme-focus">
-                    <h4>Areas of focus</h4>
-
-                    <ul className="programme-focus-list">
+                  <p>{programme.description}</p>
+                  
+                  <div>
+                    <h4 style={{ marginTop: '24px', marginBottom: '16px', fontSize: '14px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: '#c6c8d1' }}>
+                      Areas of focus
+                    </h4>
+                    <ul>
                       {programme.topics.map((topic) => (
                         <li key={topic}>
-                          <CheckCircle2
-                            size={18}
-                            aria-hidden="true"
-                          />
-                          <span>{topic}</span>
+                          {topic}
                         </li>
                       ))}
                     </ul>
@@ -152,40 +114,23 @@ export default function Programmes() {
               )
             })}
           </div>
-
         </div>
       </section>
 
       {/* Enquiry CTA */}
       <section className="programmes-cta">
-        <div className="programmes-container programmes-cta-content">
-
-          <div className="programmes-cta-text">
-            <p className="programmes-cta-eyebrow">
-              TAKE THE NEXT STEP
-            </p>
-
-            <h2>
-              Interested in learning with ICE Academy?
-            </h2>
-
-            <p>
-              Get in touch with our team to enquire about learning
-              opportunities and programme information.
-            </p>
-          </div>
-
-          <Link
-            to="/contact"
-            className="programmes-cta-button"
-          >
+        <div className="programmes-container">
+          <h2>Interested in learning with ICE Academy?</h2>
+          <p>
+            Get in touch with our team to enquire about learning
+            opportunities and programme information.
+          </p>
+          <Link to="/contact" className="programmes-btn">
             Make an enquiry
             <ArrowRight size={18} />
           </Link>
-
         </div>
       </section>
-
     </main>
   )
 }

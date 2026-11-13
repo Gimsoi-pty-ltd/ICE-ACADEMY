@@ -1,16 +1,6 @@
-
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  GraduationCap,
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  ArrowRight,
-  ArrowLeft,
-} from 'lucide-react'
-
+import { GraduationCap, Eye, EyeOff, Mail, Lock, ArrowRight, ArrowLeft } from 'lucide-react'
 import './PortalLogin.css'
 
 export default function PortalLogin() {
@@ -21,192 +11,113 @@ export default function PortalLogin() {
 
   function handleSubmit(event) {
     event.preventDefault()
-
     if (!email.trim() || !password.trim()) {
       setMessage('Please enter your email address and password.')
       return
     }
-
-    setMessage(
-      'Your login form is working! Account authentication will be connected when the backend is ready.'
-    )
+    setMessage('Your login form is working! Account authentication will be connected when the backend is ready.')
   }
 
   return (
-    <main className="portal-login">
-
-      {/* Left branding panel */}
-      <section className="portal-login-brand">
-        <div className="portal-brand-content">
-
-          <div className="portal-brand-heading">
-            <div className="portal-brand-icon">
-              <GraduationCap size={36} />
-            </div>
-
-            <div>
-              <h2>ICE Academy</h2>
-              <p>Learner Portal</p>
-            </div>
+    <main className="portal-login-page">
+      
+      {/* Left Side - Branding */}
+      <section className="portal-left">
+        <div className="portal-brand">
+          <div className="portal-brand-icon">
+            <GraduationCap size={32} />
           </div>
-
-          <div className="portal-brand-message">
-            <span className="portal-eyebrow">
-              WELCOME TO ICE ACADEMY
-            </span>
-
-            <h1>
-              Your learning journey starts here.
-            </h1>
-
-            <p>
-              Access your learning space, explore courses and
-              keep track of your development with ICE Academy.
-            </p>
+          <div>
+            <h2>ICE Academy</h2>
+            <p>Learner Portal</p>
           </div>
+        </div>
 
-          <div className="portal-brand-footer">
-            <p>
-              Learn. Develop. Innovate. Build Your Future.
-            </p>
-          </div>
-
+        <div className="portal-hero-content">
+          <span className="portal-eyebrow">WELCOME TO ICE ACADEMY</span>
+          <h1>Your learning journey starts here.</h1>
+          <p>
+            Access your learning space, explore courses and keep track of
+            your development with ICE Academy.
+          </p>
+        </div>
+        
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '24px', position: 'relative', zIndex: 1 }}>
+          <p style={{ color: '#c6c8d1', margin: 0 }}>Learn. Develop. Innovate. Build Your Future.</p>
         </div>
       </section>
 
-      {/* Login section */}
-      <section className="portal-login-main">
-        <div className="portal-login-container">
-
+      {/* Right Side - Login Form */}
+      <section className="portal-right">
+        <div className="portal-form-wrapper">
           <Link to="/" className="portal-back-link">
-            <ArrowLeft size={18} />
-            Back to website
+            <ArrowLeft size={18} /> Back to website
           </Link>
 
-          {/* Mobile branding */}
-          <div className="portal-mobile-brand">
-            <div className="portal-brand-icon">
-              <GraduationCap size={30} />
-            </div>
-
-            <div>
-              <h2>ICE Academy</h2>
-              <p>Learner Portal</p>
-            </div>
-          </div>
-
-          <div className="portal-login-heading">
-            <span className="portal-eyebrow">
-              LEARNER PORTAL
-            </span>
-
+          <div className="portal-form-header">
+            <span className="portal-eyebrow">LEARNER PORTAL</span>
             <h2>Welcome back</h2>
-
-            <p>
-              Sign in to access your learning dashboard.
-            </p>
+            <p>Sign in to access your learning dashboard.</p>
           </div>
 
-          {/* Login form */}
-          <form
-            onSubmit={handleSubmit}
-            className="portal-login-form"
-          >
-
+          <form onSubmit={handleSubmit}>
             <div className="portal-form-group">
-              <label htmlFor="email">
-                Email address
-              </label>
-
+              <label htmlFor="email">Email address</label>
               <div className="portal-input-wrapper">
-                <Mail size={19} />
-
+                <Mail size={18} />
                 <input
                   id="email"
                   type="email"
-                  value={email}
-                  onChange={(event) => {
-                    setEmail(event.target.value)
-                    setMessage('')
-                  }}
+                  className="portal-input"
                   placeholder="Enter your email"
-                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setMessage(''); }}
                   required
                 />
               </div>
             </div>
 
             <div className="portal-form-group">
-              <label htmlFor="password">
-                Password
-              </label>
-
+              <label htmlFor="password">Password</label>
               <div className="portal-input-wrapper">
-                <Lock size={19} />
-
+                <Lock size={18} />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(event) => {
-                    setPassword(event.target.value)
-                    setMessage('')
-                  }}
+                  className="portal-input"
                   placeholder="Enter your password"
-                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => { setPassword(e.target.value); setMessage(''); }}
                   required
                 />
-
                 <button
                   type="button"
-                  className="portal-password-toggle"
+                  className="portal-toggle-password"
                   onClick={() => setShowPassword(!showPassword)}
-                  aria-label={
-                    showPassword ? 'Hide password' : 'Show password'
-                  }
                 >
-                  {showPassword
-                    ? <EyeOff size={19} />
-                    : <Eye size={19} />
-                  }
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
             {message && (
-              <div
-                role="status"
-                className="portal-login-message"
-              >
+              <div className="portal-alert">
                 {message}
               </div>
             )}
 
-            <button
-              type="submit"
-              className="portal-submit-button"
-            >
-              <span>Sign in</span>
-              <ArrowRight size={19} />
+            <button type="submit" className="portal-submit-btn">
+              Sign in <ArrowRight size={18} />
             </button>
-
           </form>
 
-          {/* Assistance */}
-          <div className="portal-login-assistance">
-            <p>
-              Need assistance accessing the portal?
-            </p>
-
-            <Link to="/contact">
-              Contact ICE Academy
-            </Link>
+          <div className="portal-footer-text">
+            Need assistance accessing the portal? <Link to="/contact">Contact ICE Academy</Link>
           </div>
-
-          <div className="portal-login-copyright">
+          
+          <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '12px', color: '#6b7280' }}>
             ICE Academy · Learner Portal Prototype
           </div>
-
         </div>
       </section>
 

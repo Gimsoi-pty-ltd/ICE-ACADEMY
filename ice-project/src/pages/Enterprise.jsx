@@ -1,5 +1,4 @@
-
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   BookOpen,
@@ -17,37 +16,43 @@ const pathway = [
     icon: BookOpen,
     title: 'Learn',
     description: 'Build knowledge and explore new possibilities.',
-    details: 'Explore knowledge, discover opportunities and develop a foundation for future ideas.',
+    details:
+      'Learning is the starting point of the enterprise journey. Explore knowledge, discover opportunities and develop a foundation for future ideas.',
   },
   {
     icon: TrendingUp,
     title: 'Develop',
     description: 'Strengthen skills and develop ideas.',
-    details: 'Strengthen practical skills, improve knowledge and turn early ideas into structured concepts.',
+    details:
+      'Development focuses on strengthening practical skills, improving knowledge and turning early ideas into more structured concepts.',
   },
   {
     icon: Lightbulb,
     title: 'Innovate',
     description: 'Explore creative approaches to real-world challenges.',
-    details: 'Develop creative thinking, problem-solving and innovative approaches to challenges.',
+    details:
+      'Innovation encourages creative thinking, problem-solving and exploring new approaches to challenges in communities and businesses.',
   },
   {
     icon: Rocket,
     title: 'Entrepreneurship',
     description: 'Explore the foundations of turning ideas into opportunities.',
-    details: 'Discover opportunities, understand markets and explore how ideas can become business concepts.',
+    details:
+      'Entrepreneurship introduces the principles of identifying opportunities, understanding markets and exploring how ideas can become business concepts.',
   },
   {
     icon: Sprout,
     title: 'Incubate',
     description: 'A proposed stage for developing and refining ideas.',
-    details: 'Explore how business ideas could be developed, tested and refined. Incubation services are not yet confirmed.',
+    details:
+      'Incubation is an envisioned stage where business ideas could be developed, tested and refined. Availability of incubation services has not been confirmed.',
   },
   {
     icon: TrendingUp,
     title: 'Grow',
     description: 'Work towards sustainable development and growth.',
-    details: 'Explore long-term development, sustainability and opportunities to grow business ideas.',
+    details:
+      'Growth focuses on exploring long-term development, sustainability and opportunities to expand business ideas into viable enterprises.',
   },
 ]
 
@@ -56,102 +61,114 @@ export default function Enterprise() {
 
   return (
     <main className="enterprise-page">
-
+      {/* Hero Section */}
       <section className="enterprise-hero">
         <div className="enterprise-container">
-          <p className="enterprise-hero-label">ICE ENTERPRISE</p>
-
+          <span className="enterprise-eyebrow">ICE ENTERPRISE</span>
           <h1>Turning learning and ideas into opportunities.</h1>
-
-          <p>
-            Explore the envisioned enterprise development pathway
-            connected to the ICE Academy learning journey.
+          <p className="enterprise-hero-description">
+            Explore the envisioned enterprise development pathway connected
+            to the ICE Academy learning journey.
           </p>
         </div>
       </section>
 
-      <section className="enterprise-pathway">
-        <div className="enterprise-intro">
-          <span>THE ENTERPRISE PATHWAY</span>
-          <h2>From learning to growth</h2>
-          <p>
-            Discover the journey from building knowledge to developing
-            ideas and exploring sustainable enterprise opportunities.
-            This is an envisioned pathway, not a confirmation of
-            currently available services.
-          </p>
-        </div>
+      {/* Enterprise Pathway */}
+      <section className="enterprise-section">
+        <div className="enterprise-container">
+          <div className="enterprise-section-heading">
+            <span className="enterprise-label">THE ENTERPRISE PATHWAY</span>
+            <h2>From learning to growth</h2>
+            <p>
+              Discover the journey from building knowledge to developing ideas 
+              and exploring sustainable enterprise opportunities. This is an 
+              envisioned pathway, not a confirmation of currently available services.
+            </p>
+          </div>
 
-        <div className="enterprise-pathway-grid">
-          {pathway.map((step, index) => {
-            const Icon = step.icon
+          <div className="enterprise-pathway-grid">
+            {pathway.map((step, index) => {
+              const Icon = step.icon
+              return (
+                <button
+                  key={step.title}
+                  type="button"
+                  onClick={() => setSelectedStep(step)}
+                  className="enterprise-pathway-card"
+                >
+                  <div className="enterprise-pathway-top">
+                    <Icon size={32} className="enterprise-pathway-icon" />
+                    <span className="enterprise-pathway-number">0{index + 1}</span>
+                  </div>
 
-            return (
-              <button
-                key={step.title}
-                type="button"
-                className="enterprise-card"
-                onClick={() => setSelectedStep(step)}
-              >
-                <div className="enterprise-card-top">
-                  <Icon size={32} />
-                  <span>0{index + 1}</span>
-                </div>
-
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-
-                <span className="enterprise-card-link">
-                  Explore stage <ArrowRight size={17} />
-                </span>
-              </button>
-            )
-          })}
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                  
+                  <span className="enterprise-pathway-link">
+                    Explore stage <ArrowRight size={18} />
+                  </span>
+                </button>
+              )
+            })}
+          </div>
         </div>
       </section>
 
+      {/* Information Popup */}
       {selectedStep && (
         <div
-          className="enterprise-overlay"
+          className="enterprise-modal-overlay"
           onClick={() => setSelectedStep(null)}
         >
           <div
             className="enterprise-modal"
             role="dialog"
             aria-modal="true"
-            onClick={(event) => event.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
-            <button
-              className="enterprise-close"
+            <div className="enterprise-modal-header">
+              <h2>{selectedStep.title}</h2>
+              <button
+                type="button"
+                onClick={() => setSelectedStep(null)}
+                className="enterprise-modal-close"
+                aria-label="Close information"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <p className="enterprise-modal-description">
+              {selectedStep.details}
+            </p>
+
+            <Link
+              to="/contact"
               onClick={() => setSelectedStep(null)}
-              aria-label="Close"
+              className="enterprise-btn"
             >
-              <X size={23} />
-            </button>
-
-            <h2>{selectedStep.title}</h2>
-            <p>{selectedStep.details}</p>
-
-            <Link to="/contact" className="enterprise-button">
-              Make an enquiry <ArrowRight size={18} />
+              Make an enquiry
+              <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       )}
 
-      <section className="enterprise-contact">
-        <div className="enterprise-container enterprise-contact-inner">
-          <div>
-            <h2>Interested in enterprise development?</h2>
-            <p>Contact ICE Academy to discuss your enquiry.</p>
+      {/* Contact Section */}
+      <section className="enterprise-cta">
+        <div className="enterprise-container">
+          <div className="enterprise-cta-content">
+            <div>
+              <h2>Interested in enterprise development?</h2>
+              <p>Contact us to discuss your enquiry.</p>
+            </div>
+            <Link to="/contact" className="enterprise-btn">
+              Make an enquiry
+              <ArrowRight size={18} />
+            </Link>
           </div>
-
-          <Link to="/contact" className="enterprise-button">
-            Make an enquiry <ArrowRight size={18} />
-          </Link>
         </div>
       </section>
-
     </main>
   )
 }
