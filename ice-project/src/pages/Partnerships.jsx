@@ -9,6 +9,7 @@ import {
   ArrowRight,
   X,
 } from 'lucide-react'
+import './Partnerships.css'
 
 const opportunities = [
   {
@@ -41,19 +42,20 @@ export default function Partnerships() {
   const [selectedOpportunity, setSelectedOpportunity] = useState(null)
 
   return (
-    <main>
+    <main className="partnerships-page">
+
       {/* Hero Section */}
-      <section className="bg-gray-950 text-white px-6 py-24">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-red-400 font-semibold mb-4">
+      <section className="partnerships-hero">
+        <div className="partnerships-container">
+          <p className="partnerships-eyebrow">
             PARTNER WITH US
           </p>
 
-          <h1 className="text-4xl md:text-6xl font-bold max-w-3xl">
+          <h1>
             Building opportunities through collaboration.
           </h1>
 
-          <p className="text-gray-300 max-w-2xl mt-6 leading-8">
+          <p className="partnerships-hero-description">
             ICE Academy welcomes enquiries from organisations interested in
             learning, development and innovation.
           </p>
@@ -61,76 +63,65 @@ export default function Partnerships() {
       </section>
 
       {/* Partnership Opportunities */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="max-w-2xl mb-12">
-          <p className="text-red-600 font-semibold">
-            WORK WITH ICE ACADEMY
-          </p>
+      <section className="partnerships-section">
+        <div className="partnerships-container">
 
-          <h2 className="text-3xl md:text-4xl font-bold mt-3">
-            Explore collaboration
-          </h2>
+          <div className="partnerships-intro">
+            <p className="partnerships-label">
+              WORK WITH ICE ACADEMY
+            </p>
 
-          <p className="text-gray-600 mt-4 leading-7">
-            These are areas for potential collaboration. Specific partnership
-            arrangements will depend on discussion and approval.
-          </p>
-        </div>
+            <h2>Explore collaboration</h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {opportunities.map((item) => {
-            const Icon = item.icon
+            <p>
+              These are areas for potential collaboration. Specific partnership
+              arrangements will depend on discussion and approval.
+            </p>
+          </div>
 
-            return (
-              <button
-                key={item.title}
-                type="button"
-                onClick={() => setSelectedOpportunity(item)}
-                className="text-left border border-gray-200 rounded-lg p-8
-                hover:border-red-500 hover:shadow-lg hover:-translate-y-1
-                transition-all duration-300 group"
-              >
-                <Icon
-                  size={32}
-                  className="text-red-600 group-hover:scale-110 transition-transform"
-                />
+          <div className="partnerships-grid">
+            {opportunities.map((item) => {
+              const Icon = item.icon
 
-                <h3 className="text-xl font-bold mt-5">
-                  {item.title}
-                </h3>
+              return (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => setSelectedOpportunity(item)}
+                  className="partnership-card"
+                >
+                  <Icon size={32} className="partnership-card-icon" />
 
-                <p className="text-gray-600 mt-3 leading-7">
-                  {item.description}
-                </p>
+                  <h3>{item.title}</h3>
 
-                <span className="flex items-center gap-2 text-red-600 font-semibold mt-6">
-                  Explore more
-                  <ArrowRight size={18} />
-                </span>
-              </button>
-            )
-          })}
+                  <p>{item.description}</p>
+
+                  <span className="partnership-card-link">
+                    Explore more
+                    <ArrowRight size={18} />
+                  </span>
+                </button>
+              )
+            })}
+          </div>
         </div>
       </section>
 
       {/* Information Popup */}
       {selectedOpportunity && (
         <div
-          className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-6"
+          className="partnership-modal-overlay"
           onClick={() => setSelectedOpportunity(null)}
         >
           <div
             role="dialog"
             aria-modal="true"
             aria-labelledby="opportunity-title"
-            className="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
+            className="partnership-modal"
+            onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex justify-between items-start gap-4">
-              <h2
-                id="opportunity-title"
-                className="text-2xl font-bold"
-              >
+            <div className="partnership-modal-header">
+              <h2 id="opportunity-title">
                 {selectedOpportunity.title}
               </h2>
 
@@ -138,22 +129,20 @@ export default function Partnerships() {
                 type="button"
                 onClick={() => setSelectedOpportunity(null)}
                 aria-label="Close information"
-                className="text-gray-500 hover:text-red-600"
+                className="partnership-modal-close"
               >
                 <X size={24} />
               </button>
             </div>
 
-            <p className="text-gray-600 mt-5 leading-7">
+            <p className="partnership-modal-description">
               {selectedOpportunity.details}
             </p>
 
             <Link
               to="/contact"
               onClick={() => setSelectedOpportunity(null)}
-              className="inline-flex items-center gap-2 bg-red-600
-              text-white px-6 py-3 rounded-md font-semibold
-              hover:bg-red-700 mt-7"
+              className="partnership-button"
             >
               Partnership enquiry
               <ArrowRight size={18} />
@@ -163,31 +152,27 @@ export default function Partnerships() {
       )}
 
       {/* Partnership CTA */}
-      <section className="bg-red-600 text-white px-6 py-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <Handshake size={36} className="mb-4" />
+      <section className="partnerships-cta">
+        <div className="partnerships-container partnerships-cta-content">
 
-            <h2 className="text-3xl font-bold">
-              Let's explore working together.
-            </h2>
+          <div className="partnerships-cta-text">
+            <Handshake size={36} className="partnerships-handshake" />
 
-            <p className="text-red-100 mt-3">
+            <h2>Let's explore working together.</h2>
+
+            <p>
               Tell us about your organisation and partnership interests.
             </p>
           </div>
 
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-white
-            text-red-600 px-6 py-3 rounded-md font-semibold
-            hover:bg-gray-100 transition"
-          >
+          <Link to="/contact" className="partnerships-cta-button">
             Partnership enquiry
             <ArrowRight size={18} />
           </Link>
+
         </div>
       </section>
+
     </main>
   )
 }
