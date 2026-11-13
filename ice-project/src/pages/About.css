@@ -340,3 +340,24 @@
   color: #ffffff;
   transform: scale(1.1);
 }
+/* Premium Red Glow for About Cards */
+.about-value-card {
+  transition: all 0.3s ease;
+}
+
+.about-value-card:hover {
+  border-color: rgba(248, 113, 113, 0.4) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15) !important;
+}
+
+.about-value-icon {
+  transition: all 0.3s ease;
+}
+
+.about-value-card:hover .about-value-icon {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
