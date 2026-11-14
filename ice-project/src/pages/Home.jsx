@@ -10,317 +10,348 @@ import {
   Rocket,
   Sparkles,
   TrendingUp,
+  CheckCircle2,
+  Globe,
+  Award,
 } from 'lucide-react'
+
+import './Home.css'
+import robotGrad from '../assets/robot-grad.png'
+
 
 const focusAreas = [
   {
     icon: BookOpen,
+    number: '01',
     title: 'Digital and Technology Skills',
     description:
-      'Explore opportunities to develop practical digital and technology skills.',
+      'Explore practical digital knowledge and technology skills that prepare individuals for an evolving digital world.',
   },
   {
     icon: Users,
+    number: '02',
     title: 'Professional Development',
     description:
-      'Build professional capabilities and prepare for future opportunities.',
+      'Build professional capabilities, strengthen confidence and prepare for future workplace opportunities.',
   },
   {
     icon: Lightbulb,
+    number: '03',
     title: 'Entrepreneurship and Business',
     description:
-      'Discover ideas and knowledge that support business development.',
+      'Discover entrepreneurial thinking, business development and the power of turning ideas into opportunities.',
   },
   {
     icon: Target,
+    number: '04',
     title: 'Innovation and Emerging Technologies',
     description:
-      'Explore innovation and the technologies shaping tomorrow.',
+      'Explore creative thinking, emerging technologies and innovative approaches to real-world challenges.',
   },
 ]
 
 const impactAreas = [
   {
-    icon: Users,
+    icon: GraduationCap,
     title: 'Learner Development',
-    description: 'Encouraging individuals to build knowledge and confidence.',
+    description:
+      'Encouraging individuals to build knowledge, strengthen their capabilities and grow in confidence.',
   },
   {
-    icon: GraduationCap,
+    icon: Globe,
     title: 'Learning Opportunities',
-    description: 'Promoting access to learning and skills development.',
+    description:
+      'Promoting access to learning, skills development and opportunities for personal growth.',
   },
   {
     icon: TrendingUp,
     title: 'Future Growth',
-    description: 'Supporting continuous development and new possibilities.',
+    description:
+      'Supporting continuous development, innovation and new possibilities for the future.',
   },
+]
+
+const highlights = [
+  'Learning and skills development',
+  'Professional and personal growth',
+  'Entrepreneurship and innovation',
 ]
 
 export default function Home() {
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+    <main className="home-page">
 
-          <div>
-            <span className="inline-block bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Welcome to ICE Academy
-            </span>
+      {/* HERO SECTION */}
+      <section className="home-hero">
+        <div className="hero-glow hero-glow-top" />
+        <div className="hero-glow hero-glow-bottom" />
 
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-950">
-              Learn. Develop. Innovate.
-              <span className="text-red-600"> Build Your Future.</span>
+        <div className="home-container hero-layout">
+          <div className="hero-content">
+            <div className="hero-label">
+              <Sparkles size={15} />
+              <span>Welcome to ICE Academy</span>
+            </div>
+
+            <h1 className="hero-title">
+              Learn. Develop.
+              <span className="hero-title-red">Innovate.</span>
+              <span>Build Your Future.</span>
             </h1>
 
-            <p className="mt-6 text-lg text-gray-600 leading-8 max-w-xl">
-              Discover opportunities to grow your knowledge, develop practical
-              skills and explore innovation through learning.
+            <p className="hero-description">
+              Discover opportunities to grow your knowledge, develop
+              practical skills and explore innovation through learning.
+              Your journey towards new possibilities starts here.
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Link
-                to="/programmes"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 hover:-translate-y-0.5 transition-all duration-300"
-              >
+            <div className="hero-actions">
+              <Link to="/programmes" className="home-button home-button-primary">
                 Explore Programmes
-                <ArrowRight size={18} />
+                <ArrowRight size={17} />
               </Link>
 
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-gray-300 text-gray-900 font-semibold hover:bg-gray-100 transition"
-              >
+              <Link to="/about" className="home-button home-button-outline">
                 Discover ICE Academy
               </Link>
             </div>
 
-            <div className="flex items-center gap-3 mt-10">
-              <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
-                <Sparkles className="text-red-600" size={20} />
-              </div>
-
-              <p className="text-sm text-gray-500">
-                Learn today. Create tomorrow.
-              </p>
+            <div className="hero-note">
+              <span className="hero-note-icon">
+                <CheckCircle2 size={17} />
+              </span>
+              <span>Empowering learning. Inspiring innovation.</span>
             </div>
           </div>
 
-          {/* Hero Visual */}
-          <div className="relative">
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-red-100 rounded-full blur-2xl opacity-70" />
+          {/* HERO VISUAL */}
+          <div className="hero-visual">
+            <div className="hero-visual-glow" />
 
-            <div className="relative bg-gray-950 rounded-2xl min-h-80 md:min-h-[430px] flex items-center justify-center p-10 overflow-hidden">
-              <div className="absolute w-72 h-72 border border-gray-700 rounded-full" />
-              <div className="absolute w-52 h-52 border border-gray-700 rounded-full" />
+            <div className="hero-visual-card">
+              <div className="visual-heading">
+                <div>
+                  <p className="visual-eyebrow">The ICE Academy vision</p>
+                  <p className="visual-subtitle">
+                    Learning for a changing world
+                  </p>
+                </div>
+            <div className="visual-heading-icon">
+               <GraduationCap size={23} />
+              </div>
 
-              <div className="relative text-center">
-                <div className="w-28 h-28 bg-red-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
-                  <GraduationCap size={65} className="text-white" />
+              </div>
+
+              <div className="visual-center">
+                <div className="visual-circle visual-circle-outer" />
+                <div className="visual-circle visual-circle-inner" />
+
+                <div className="visual-main-icon">
+  <img src={robotGrad} alt="ICE Robot with graduation cap" style={{ width: '110px', height: '110px', objectFit: 'contain' }} />
+</div>
+
+                <div className="floating-icon floating-icon-top">
+                  <Lightbulb size={21} />
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-bold mt-8 text-white">
-                  Your Future
-                  <span className="text-red-400"> Starts Here</span>
-                </h2>
-
-                <p className="text-gray-300 mt-4 leading-7">
-                  Discover. Develop. Achieve.
-                </p>
-
-                <div className="flex justify-center gap-3 mt-8">
-                  <span className="w-3 h-3 rounded-full bg-red-500" />
-                  <span className="w-3 h-3 rounded-full bg-gray-500" />
-                  <span className="w-3 h-3 rounded-full bg-gray-500" />
+                <div className="floating-icon floating-icon-bottom">
+                  <Rocket size={21} />
                 </div>
+              </div>
+
+              <div className="visual-caption">
+                <h2>Your Future Starts Here.</h2>
+                <p>Learn. Create. Grow. Achieve.</p>
+              </div>
+
+              <div className="visual-pillars">
+                {['LEARN', 'DEVELOP', 'INNOVATE'].map((item) => (
+                  <div key={item}>{item}</div>
+                ))}
               </div>
             </div>
           </div>
-
         </div>
+
+        <div className="hero-bottom-line" />
       </section>
 
-      {/* Introduction */}
-      <section className="bg-gray-50 py-20 px-6">
-        <div className="max-w-5xl mx-auto text-center">
+      {/* INTRODUCTION */}
+      <section className="home-introduction">
+        <div className="home-container intro-layout">
+          <div className="intro-content">
+            <p className="section-eyebrow">About ICE Academy</p>
 
-          <p className="text-red-600 font-semibold uppercase tracking-wider text-sm">
-            About ICE Academy
-          </p>
+            <h2 className="section-title">
+              Creating opportunities through
+              <span> learning and innovation.</span>
+            </h2>
 
-          <h2 className="text-3xl md:text-4xl font-bold mt-4 text-gray-950">
-            Creating opportunities through learning and innovation
-          </h2>
-
-          <p className="text-gray-600 text-lg leading-8 mt-6">
-            ICE Academy is focused on learning, development and innovation.
-            Our aim is to create opportunities for individuals to build
-            knowledge, strengthen their capabilities and explore new ideas.
-          </p>
-
-          <Link
-            to="/about"
-            className="inline-flex items-center gap-2 text-red-600 font-semibold mt-7 hover:gap-4 transition-all duration-300"
-          >
-            Learn more about us
-            <ArrowRight size={18} />
-          </Link>
-
-        </div>
-      </section>
-
-      {/* Focus Areas */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-red-600 font-semibold uppercase tracking-wider text-sm">
-              What We Focus On
+            <p className="section-description">
+              ICE Academy is focused on learning, development and
+              innovation. Our aim is to create opportunities for
+              individuals to build knowledge, strengthen their
+              capabilities and explore new ideas.
             </p>
 
-            <h2 className="text-3xl md:text-4xl font-bold mt-4">
+            <Link to="/about" className="home-button home-button-dark">
+              Discover Our Academy
+              <ArrowRight size={17} />
+            </Link>
+          </div>
+
+          <div className="commitment-card">
+            <div className="commitment-icon">
+              <Award size={25} />
+            </div>
+
+            <h3>Our Commitment</h3>
+
+            <p>
+              We believe that knowledge, practical skills and
+              innovative thinking can help individuals explore
+              opportunities and work towards a better future.
+            </p>
+
+            <div className="commitment-highlights">
+              {highlights.map((item) => (
+                <div className="commitment-item" key={item}>
+                  <CheckCircle2 size={18} />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOCUS AREAS */}
+      <section className="home-focus">
+        <div className="home-container">
+          <div className="section-heading">
+            <p className="section-eyebrow">What We Focus On</p>
+
+            <h2 className="section-title">
               Explore Areas of Development
             </h2>
 
-            <p className="text-gray-600 mt-4 leading-7">
-              Explore our proposed areas of learning and development.
-              Programme availability and details will be confirmed separately.
+            <p className="section-description">
+              Discover our proposed areas of learning and development.
+              Each represents an opportunity to explore knowledge,
+              strengthen skills and develop new ideas.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {focusAreas.map((area, index) => {
+          <div className="focus-grid">
+            {focusAreas.map((area) => {
               const Icon = area.icon
 
               return (
-                <article
-                  key={area.title}
-                  className="group border border-gray-200 rounded-xl p-7 hover:border-red-300 hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
-                >
-                  <div className="flex justify-between items-center">
-                    <div className="w-14 h-14 rounded-xl bg-red-50 flex items-center justify-center group-hover:bg-red-600 transition-colors duration-300">
-                      <Icon
-                        className="text-red-600 group-hover:text-white transition-colors duration-300"
-                        size={27}
-                      />
+                <article className="focus-card" key={area.title}>
+                  <div className="focus-card-top">
+                    <div className="focus-icon">
+                      <Icon size={23} />
                     </div>
 
-                    <span className="text-sm font-semibold text-gray-300">
-                      0{index + 1}
-                    </span>
+                    <span className="focus-number">{area.number}</span>
                   </div>
 
-                  <h3 className="text-xl font-bold mt-6">
-                    {area.title}
-                  </h3>
+                  <h3>{area.title}</h3>
 
-                  <p className="text-gray-600 leading-7 mt-3">
-                    {area.description}
-                  </p>
+                  <p>{area.description}</p>
 
-                  <div className="mt-6 flex items-center gap-2 text-red-600 font-semibold text-sm">
+                  <Link to="/programmes" className="focus-link">
                     Explore area
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
+                    <ArrowRight size={16} />
+                  </Link>
                 </article>
               )
             })}
           </div>
 
-          <div className="text-center mt-12">
-            <Link
-              to="/programmes"
-              className="inline-flex items-center gap-2 bg-red-600 text-white px-7 py-3 rounded-md font-semibold hover:bg-red-700 transition"
-            >
-              Explore Programmes
-              <ArrowRight size={18} />
+          <div className="section-action">
+            <Link to="/programmes" className="home-button home-button-primary">
+              View All Programmes
+              <ArrowRight size={17} />
             </Link>
           </div>
-
         </div>
       </section>
 
-      {/* Impact Preview */}
-      <section className="bg-gray-950 text-white py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* IMPACT */}
+      <section className="home-impact">
+        <div className="impact-glow" />
 
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-red-400 font-semibold uppercase tracking-wider text-sm">
-              Our Impact
-            </p>
+        <div className="home-container impact-content">
+          <div className="section-heading impact-heading">
+            <p className="section-eyebrow">Our Impact</p>
 
-            <h2 className="text-3xl md:text-4xl font-bold mt-4">
+            <h2 className="section-title">
               Building a Future Through Meaningful Development
             </h2>
 
-            <p className="text-gray-400 mt-5 leading-7">
+            <p className="section-description">
               We believe in creating opportunities for people to learn,
               develop and contribute to their communities.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+          <div className="impact-grid">
             {impactAreas.map((area) => {
               const Icon = area.icon
 
               return (
-                <article
-                  key={area.title}
-                  className="border border-gray-700 rounded-xl p-8 hover:border-red-500 hover:bg-gray-900 transition-all duration-300"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-red-600/10 flex items-center justify-center">
-                    <Icon size={28} className="text-red-400" />
+                <article className="impact-card" key={area.title}>
+                  <div className="impact-icon">
+                    <Icon size={24} />
                   </div>
 
-                  <h3 className="text-xl font-bold mt-6">
-                    {area.title}
-                  </h3>
+                  <h3>{area.title}</h3>
 
-                  <p className="text-gray-400 mt-3 leading-7">
-                    {area.description}
-                  </p>
+                  <p>{area.description}</p>
                 </article>
               )
             })}
           </div>
 
-          <div className="text-center mt-12">
-            <Link
-              to="/impact"
-              className="inline-flex items-center gap-2 text-white font-semibold hover:text-red-400 transition"
-            >
-              Discover our impact
-              <ArrowRight size={18} />
+          <div className="section-action">
+            <Link to="/impact" className="home-button home-button-impact">
+              Discover Our Impact
+              <ArrowRight size={17} />
             </Link>
           </div>
-
         </div>
       </section>
 
-      {/* Call To Action */}
-      <section className="py-20 bg-red-600 text-white px-6">
-        <div className="max-w-5xl mx-auto text-center">
+      {/* FINAL CTA */}
+      <section className="home-cta">
+        <div className="home-container cta-content">
+          <div className="cta-icon">
+            <Sparkles size={24} />
+          </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Ready to Explore Your Next Opportunity?
-          </h2>
+          <p className="cta-eyebrow">Your Journey Starts Here</p>
 
-          <p className="mt-5 text-red-100 text-lg leading-8 max-w-2xl mx-auto">
+          <h2>Ready to Explore Your Next Opportunity?</h2>
+
+          <p className="cta-description">
             Connect with ICE Academy to learn more about our learning
-            opportunities and partnerships.
+            opportunities, development initiatives and partnerships.
           </p>
 
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-white text-red-600 px-7 py-3 rounded-md font-bold mt-8 hover:bg-gray-100 hover:-translate-y-1 transition-all duration-300"
-          >
-            Get in touch
-            <ArrowRight size={18} />
-          </Link>
+          <div className="cta-actions">
+            <Link to="/contact" className="home-button home-button-white">
+              Get in Touch
+              <ArrowRight size={17} />
+            </Link>
 
+            <Link to="/programmes" className="home-button home-button-cta-outline">
+              Explore Programmes
+            </Link>
+          </div>
         </div>
       </section>
+
     </main>
   )
 }

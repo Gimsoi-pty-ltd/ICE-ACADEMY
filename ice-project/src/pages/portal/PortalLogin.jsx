@@ -1,15 +1,7 @@
-
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  GraduationCap,
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  ArrowRight,
-  ArrowLeft,
-} from 'lucide-react'
+import { GraduationCap, Eye, EyeOff, Mail, Lock, ArrowRight, ArrowLeft } from 'lucide-react'
+import './PortalLogin.css'
 
 export default function PortalLogin() {
   const [email, setEmail] = useState('')
@@ -19,185 +11,116 @@ export default function PortalLogin() {
 
   function handleSubmit(event) {
     event.preventDefault()
-
     if (!email.trim() || !password.trim()) {
       setMessage('Please enter your email address and password.')
       return
     }
-
-    setMessage(
-      'Your login form is working! Account authentication will be connected when the backend is ready.'
-    )
+    setMessage('Your login form is working! Account authentication will be connected when the backend is ready.')
   }
 
   return (
-    <main className="min-h-[85vh] grid lg:grid-cols-2 bg-white">
-      {/* Left side */}
-      <section className="hidden lg:flex bg-red-700 text-white items-center justify-center px-12 py-20">
-        <div className="max-w-lg">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="bg-white text-red-700 p-3 rounded-lg">
-              <GraduationCap size={36} />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold">ICE Academy</h2>
-              <p className="text-red-100 text-sm">Learner Portal</p>
-            </div>
+    <main className="portal-login-page">
+      
+      {/* Left Side - Branding */}
+      <section className="portal-left">
+        <div className="portal-brand">
+          <div className="portal-brand-icon">
+            <GraduationCap size={32} />
           </div>
+          <div>
+            <h2>ICE Academy</h2>
+            <p>Learner Portal</p>
+          </div>
+        </div>
 
-          <h1 className="text-5xl font-bold leading-tight">
-            Your learning journey starts here.
-          </h1>
-
-          <p className="text-red-100 text-lg leading-8 mt-6">
+        <div className="portal-hero-content">
+          <span className="portal-eyebrow">WELCOME TO ICE ACADEMY</span>
+          <h1>Your learning journey starts here.</h1>
+          <p>
             Access your learning space, explore courses and keep track of
             your development with ICE Academy.
           </p>
-
-          <div className="border-t border-red-500 mt-12 pt-8">
-            <p className="text-red-100">
-              Learn. Develop. Innovate. Build Your Future.
-            </p>
-          </div>
+        </div>
+        
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '24px', position: 'relative', zIndex: 1 }}>
+          <p style={{ color: '#c6c8d1', margin: 0 }}>Learn. Develop. Innovate. Build Your Future.</p>
         </div>
       </section>
 
-      {/* Right side */}
-      <section className="flex items-center justify-center px-6 py-16">
-        <div className="w-full max-w-md">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-red-600 mb-12"
-          >
-            <ArrowLeft size={18} />
-            Back to website
+      {/* Right Side - Login Form */}
+      <section className="portal-right">
+        <div className="portal-form-wrapper">
+          <Link to="/" className="portal-back-link">
+            <ArrowLeft size={18} /> Back to website
           </Link>
 
-          <div className="lg:hidden flex items-center gap-3 mb-10">
-            <div className="bg-red-600 text-white p-3 rounded-lg">
-              <GraduationCap size={30} />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold">ICE Academy</h2>
-              <p className="text-gray-500 text-sm">Learner Portal</p>
-            </div>
+          <div className="portal-form-header">
+            <span className="portal-eyebrow">LEARNER PORTAL</span>
+            <h2>Welcome back</h2>
+            <p>Sign in to access your learning dashboard.</p>
           </div>
 
-          <p className="text-red-600 font-semibold text-sm">
-            LEARNER PORTAL
-          </p>
-
-          <h2 className="text-3xl font-bold mt-3">
-            Welcome back
-          </h2>
-
-          <p className="text-gray-500 mt-3 leading-7">
-            Sign in to access your learning dashboard.
-          </p>
-
-          <form onSubmit={handleSubmit} className="mt-9 space-y-6">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold mb-2"
-              >
-                Email address
-              </label>
-
-              <div className="relative">
-                <Mail
-                  size={19}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                />
-
+          <form onSubmit={handleSubmit}>
+            <div className="portal-form-group">
+              <label htmlFor="email">Email address</label>
+              <div className="portal-input-wrapper">
+                <Mail size={18} />
                 <input
                   id="email"
                   type="email"
-                  value={email}
-                  onChange={(event) => {
-                    setEmail(event.target.value)
-                    setMessage('')
-                  }}
+                  className="portal-input"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setMessage(''); }}
                   required
-                  className="w-full border border-gray-300 rounded-md py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
 
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-semibold mb-2"
-              >
-                Password
-              </label>
-
-              <div className="relative">
-                <Lock
-                  size={19}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                />
-
+            <div className="portal-form-group">
+              <label htmlFor="password">Password</label>
+              <div className="portal-input-wrapper">
+                <Lock size={18} />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(event) => {
-                    setPassword(event.target.value)
-                    setMessage('')
-                  }}
+                  className="portal-input"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => { setPassword(e.target.value); setMessage(''); }}
                   required
-                  className="w-full border border-gray-300 rounded-md py-3 pl-12 pr-12 focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
-
                 <button
                   type="button"
+                  className="portal-toggle-password"
                   onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700"
                 >
-                  {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
             {message && (
-              <div
-                role="status"
-                className="bg-blue-50 border border-blue-200 text-blue-800 rounded-md p-3 text-sm leading-6"
-              >
+              <div className="portal-alert">
                 {message}
               </div>
             )}
 
-            <button
-              type="submit"
-              className="w-full bg-red-600 text-white py-3 rounded-md font-semibold flex items-center justify-center gap-2 hover:bg-red-700 transition"
-            >
+            <button type="submit" className="portal-submit-btn">
               Sign in <ArrowRight size={18} />
             </button>
           </form>
 
-          <p className="text-center text-gray-500 text-sm mt-10">
-            Need assistance accessing the portal?
-          </p>
-
-          <p className="text-center mt-2">
-            <Link
-              to="/contact"
-              className="text-red-600 font-semibold hover:text-red-700"
-            >
-              Contact ICE Academy
-            </Link>
-          </p>
-
-          <p className="text-center text-xs text-gray-400 mt-12">
+          <div className="portal-footer-text">
+            Need assistance accessing the portal? <Link to="/contact">Contact ICE Academy</Link>
+          </div>
+          
+          <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '12px', color: '#6b7280' }}>
             ICE Academy · Learner Portal Prototype
-          </p>
+          </div>
         </div>
       </section>
+
     </main>
   )
 }

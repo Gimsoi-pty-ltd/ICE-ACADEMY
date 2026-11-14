@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Award,
@@ -11,7 +11,10 @@ import {
   Eye,
   X,
   ArrowLeft,
+  FileBadge,
+  Sparkles,
 } from 'lucide-react'
+import './Certificates.css'
 
 const certificateData = [
   {
@@ -41,279 +44,298 @@ export default function Certificates() {
   const [selectedCertificate, setSelectedCertificate] = useState(null)
 
   const filteredCertificates = certificateData.filter((certificate) =>
-    certificate.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    certificate.category.toLowerCase().includes(searchTerm.toLowerCase())
+    `${certificate.title} ${certificate.category} ${certificate.certificateNumber}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
   )
 
+  useEffect(() => {
+    if (!selectedCertificate) return
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setSelectedCertificate(null)
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [selectedCertificate])
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-5 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <Link
-              to="/portal/dashboard"
-              className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-red-600 mb-3"
-            >
+    <div className="certificates-page">
+      <header className="certificates-header">
+        <div className="certificates-header-inner">
+          <div className="certificates-heading">
+            <Link to="/portal/dashboard" className="certificates-back-link">
               <ArrowLeft size={16} />
               Back to Dashboard
             </Link>
 
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-              My Certificates
-            </h1>
-
-            <p className="text-gray-500 mt-1">
-              View your learning achievements and completed programmes.
-            </p>
+            <div className="certificates-title-row">
+              <div className="certificates-title-icon">
+                <Award size={23} />
+              </div>
+              <div>
+                <span className="certificates-eyebrow">LEARNER PORTAL</span>
+                <h1>My Certificates</h1>
+                <p>View and celebrate your learning achievements.</p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2 bg-red-50 text-red-700 px-4 py-3 rounded-lg">
-            <Award size={22} />
-            <span className="font-semibold">
-              {certificateData.length} Sample Certificates
-            </span>
+          <div className="certificates-header-count">
+            <Award size={20} />
+            <div>
+              <strong>{certificateData.length}</strong>
+              <span>Sample certificates</span>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-5 py-8">
-        {/* Information notice */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8 flex gap-3">
-          <ShieldCheck className="text-blue-600 shrink-0" size={22} />
-
+      <main className="certificates-main">
+        <section className="certificates-notice">
+          <div className="certificates-notice-icon">
+            <ShieldCheck size={21} />
+          </div>
           <div>
-            <h2 className="font-semibold text-blue-900">
-              Demo certificate information
-            </h2>
-            <p className="text-sm text-blue-800 mt-1">
-              These are sample certificates for the frontend prototype.
-              Official certificates will require verified learner records
-              and backend integration.
+            <h2>Demonstration certificate records</h2>
+            <p>
+              These certificates are sample records for the frontend
+              prototype. Official certificates will require verified learner
+              records and backend integration.
             </p>
           </div>
-        </div>
+        </section>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-gray-500 text-sm">Sample certificates</p>
-                <h2 className="text-3xl font-bold mt-2">
-                  {certificateData.length}
-                </h2>
-              </div>
-
-              <div className="bg-red-50 text-red-600 p-3 rounded-lg">
-                <Award size={25} />
-              </div>
+        <section className="certificates-stats">
+          <article className="certificate-stat-card">
+            <div>
+              <span>Sample certificates</span>
+              <strong>{certificateData.length}</strong>
+              <small>Available to preview</small>
             </div>
+            <div className="certificate-stat-icon red">
+              <Award size={23} />
+            </div>
+          </article>
+
+          <article className="certificate-stat-card">
+            <div>
+              <span>Completed programmes</span>
+              <strong>
+                {certificateData.filter((item) => item.status === 'Completed').length}
+              </strong>
+              <small>Sample completion records</small>
+            </div>
+            <div className="certificate-stat-icon green">
+              <GraduationCap size={23} />
+            </div>
+          </article>
+        </section>
+
+        <section className="certificates-content">
+          <div className="certificates-section-heading">
+            <div>
+              <span className="certificates-eyebrow">YOUR PROGRESS</span>
+              <h2>Your achievements</h2>
+              <p>Explore your completed programme certificates.</p>
+            </div>
+            <span className="certificates-results-count">
+              {filteredCertificates.length} results
+            </span>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-gray-500 text-sm">Completed programmes</p>
-                <h2 className="text-3xl font-bold mt-2">
-                  {certificateData.length}
-                </h2>
-              </div>
-
-              <div className="bg-green-50 text-green-600 p-3 rounded-lg">
-                <GraduationCap size={25} />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Search */}
-        <div className="bg-white border border-gray-200 rounded-xl p-5 mb-6">
-          <div className="relative">
-            <Search
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-              size={19}
-            />
-
+          <div className="certificates-search">
+            <Search size={19} />
             <input
-              type="text"
+              type="search"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search certificates by programme or category..."
-              className="w-full border border-gray-200 rounded-lg py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-red-500"
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Search by programme, category or reference..."
+              aria-label="Search certificates"
             />
-          </div>
-        </div>
-
-        {/* Certificates */}
-        <div className="mb-5">
-          <h2 className="text-xl font-bold text-gray-900">
-            Your achievements
-          </h2>
-          <p className="text-gray-500 text-sm mt-1">
-            Sample certificate records for demonstration.
-          </p>
-        </div>
-
-        {filteredCertificates.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredCertificates.map((certificate) => (
-              <div
-                key={certificate.id}
-                className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            {searchTerm && (
+              <button
+                type="button"
+                onClick={() => setSearchTerm('')}
+                aria-label="Clear search"
               >
-                <div className="bg-gradient-to-r from-red-700 to-red-500 p-6 text-white">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="text-sm text-red-100">
-                        ICE ACADEMY
-                      </p>
-                      <h3 className="text-xl font-bold mt-2">
-                        Certificate of Completion
-                      </h3>
+                <X size={17} />
+              </button>
+            )}
+          </div>
+
+          {filteredCertificates.length > 0 ? (
+            <div className="certificates-grid">
+              {filteredCertificates.map((certificate) => (
+                <article className="certificate-card" key={certificate.id}>
+                  <div className="certificate-card-banner">
+                    <div className="certificate-banner-top">
+                      <div className="certificate-brand">
+                        <div className="certificate-brand-icon">
+                          <GraduationCap size={20} />
+                        </div>
+                        <span>ICE ACADEMY</span>
+                      </div>
+                      <Award size={29} />
                     </div>
 
-                    <Award size={35} />
+                    <div className="certificate-banner-bottom">
+                      <span>LEARNING ACHIEVEMENT</span>
+                      <h3>Certificate of Completion</h3>
+                    </div>
+
+                    <span className="certificate-watermark">ICE</span>
                   </div>
 
-                  <p className="text-sm text-red-100 mt-4">
-                    SAMPLE CERTIFICATE
-                  </p>
-                </div>
+                  <div className="certificate-card-body">
+                    <div className="certificate-card-meta">
+                      <span className="certificate-status">
+                        <span />
+                        {certificate.status}
+                      </span>
+                      <span className="certificate-sample-label">SAMPLE</span>
+                    </div>
 
-                <div className="p-6">
-                  <span className="inline-block bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                    {certificate.status}
-                  </span>
+                    <h3>{certificate.title}</h3>
+                    <p className="certificate-category">{certificate.category}</p>
 
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {certificate.title}
-                  </h3>
+                    <div className="certificate-details">
+                      <div>
+                        <CalendarDays size={16} />
+                        <span>{certificate.issuedDate}</span>
+                      </div>
+                      <div>
+                        <FileBadge size={16} />
+                        <span>{certificate.certificateNumber}</span>
+                      </div>
+                    </div>
 
-                  <p className="text-gray-500 text-sm mt-2">
-                    {certificate.category}
-                  </p>
-
-                  <div className="flex items-center gap-2 text-sm text-gray-500 mt-5">
-                    <CalendarDays size={17} />
-                    Sample issue date: {certificate.issuedDate}
+                    <button
+                      type="button"
+                      className="certificate-view-button"
+                      onClick={() => setSelectedCertificate(certificate)}
+                    >
+                      <Eye size={17} />
+                      View Certificate
+                    </button>
                   </div>
-
-                  <div className="flex items-center gap-2 text-sm text-gray-500 mt-3">
-                    <BookOpen size={17} />
-                    {certificate.certificateNumber}
-                  </div>
-
-                  <button
-                    onClick={() => setSelectedCertificate(certificate)}
-                    className="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition"
-                  >
-                    <Eye size={18} />
-                    View Certificate
-                  </button>
-                </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="certificates-empty">
+              <div className="certificates-empty-icon">
+                <Search size={27} />
               </div>
-            ))}
+              <h3>No certificates found</h3>
+              <p>
+                We couldn't find a certificate matching "{searchTerm}".
+                Try another search term.
+              </p>
+              <button type="button" onClick={() => setSearchTerm('')}>
+                Clear Search
+              </button>
+            </div>
+          )}
+        </section>
+
+        <section className="certificates-bottom-links">
+          <div>
+            <Sparkles size={19} />
+            <span>Keep building your skills and achievements.</span>
           </div>
-        ) : (
-          <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
-            <Award size={45} className="mx-auto text-gray-300" />
-
-            <h3 className="text-lg font-semibold mt-4">
-              No certificates found
-            </h3>
-
-            <p className="text-gray-500 mt-2">
-              Try searching with a different programme name.
-            </p>
+          <div className="certificates-navigation-links">
+            <Link to="/portal/courses">
+              <BookOpen size={16} />
+              Browse My Courses
+            </Link>
+            <Link to="/portal/dashboard">
+              <ArrowLeft size={16} />
+              Return to Dashboard
+            </Link>
           </div>
-        )}
-
-        {/* Other portal links */}
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Link
-            to="/portal/courses"
-            className="text-red-600 font-semibold hover:underline"
-          >
-            Browse My Courses →
-          </Link>
-
-          <Link
-            to="/portal/dashboard"
-            className="text-red-600 font-semibold hover:underline"
-          >
-            Return to Dashboard →
-          </Link>
-        </div>
+        </section>
       </main>
 
-      {/* Certificate Preview Modal */}
       {selectedCertificate && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-5 border-b">
-              <h2 className="font-bold text-lg">
-                Certificate Preview
-              </h2>
-
+        <div
+          className="certificate-modal-backdrop"
+          onClick={() => setSelectedCertificate(null)}
+        >
+          <section
+            className="certificate-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="certificate-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="certificate-modal-header">
+              <div>
+                <span className="certificates-eyebrow">ACHIEVEMENT PREVIEW</span>
+                <h2 id="certificate-modal-title">Certificate Preview</h2>
+              </div>
               <button
+                type="button"
                 onClick={() => setSelectedCertificate(null)}
-                className="text-gray-500 hover:text-red-600"
                 aria-label="Close certificate preview"
               >
-                <X size={23} />
+                <X size={21} />
               </button>
             </div>
 
-            <div className="p-6 sm:p-10">
-              <div className="border-4 border-double border-red-600 p-6 sm:p-10 text-center">
-                <Award size={48} className="mx-auto text-red-600" />
+            <div className="certificate-modal-content">
+              <div className="certificate-document">
+                <div className="certificate-document-inner">
+                  <div className="certificate-document-logo">
+                    <Award size={38} />
+                    <span>ICE ACADEMY</span>
+                  </div>
 
-                <p className="text-red-700 font-bold tracking-widest mt-4">
-                  ICE ACADEMY
-                </p>
+                  <span className="certificate-document-label">
+                    RECOGNITION OF ACHIEVEMENT
+                  </span>
 
-                <h3 className="text-2xl sm:text-3xl font-bold mt-6">
-                  Certificate of Completion
-                </h3>
+                  <h3>Certificate of Completion</h3>
 
-                <p className="text-gray-500 mt-6">
-                  This sample certificate recognises the completion of
-                </p>
-
-                <h4 className="text-xl font-bold text-red-700 mt-3">
-                  {selectedCertificate.title}
-                </h4>
-
-                <div className="mt-8 border-t pt-5">
-                  <p className="text-sm text-gray-500">
-                    Sample certificate reference
+                  <p className="certificate-document-description">
+                    This sample certificate recognises the successful
+                    completion of
                   </p>
 
-                  <p className="font-semibold mt-1">
-                    {selectedCertificate.certificateNumber}
+                  <h4>{selectedCertificate.title}</h4>
+                  <p className="certificate-document-category">
+                    {selectedCertificate.category}
                   </p>
 
-                  <p className="text-sm text-gray-500 mt-4">
-                    Sample issue date: {selectedCertificate.issuedDate}
-                  </p>
-                </div>
+                  <div className="certificate-document-footer">
+                    <div>
+                      <span>Certificate reference</span>
+                      <strong>{selectedCertificate.certificateNumber}</strong>
+                    </div>
+                    <div>
+                      <span>Sample issue date</span>
+                      <strong>{selectedCertificate.issuedDate}</strong>
+                    </div>
+                  </div>
 
-                <div className="mt-6 bg-yellow-50 text-yellow-800 text-xs p-3 rounded">
-                  DEMONSTRATION ONLY — NOT AN OFFICIAL CERTIFICATE
+                  <div className="certificate-demo-warning">
+                    DEMONSTRATION ONLY — NOT AN OFFICIAL CERTIFICATE
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-5 border-t flex justify-end">
+            <div className="certificate-modal-footer">
+              <span>Sample certificate for frontend demonstration</span>
               <button
+                type="button"
                 onClick={() => setSelectedCertificate(null)}
-                className="bg-gray-900 hover:bg-gray-700 text-white px-6 py-2.5 rounded-lg"
               >
                 Close Preview
               </button>
             </div>
-          </div>
+          </section>
         </div>
       )}
     </div>

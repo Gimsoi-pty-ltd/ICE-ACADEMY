@@ -1,4 +1,5 @@
-
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Users,
   GraduationCap,
@@ -9,8 +10,10 @@ import {
   Rocket,
   ArrowRight,
   CheckCircle2,
+  ChevronRight,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import './Impact.css'
+import robotFooter from '../assets/robot-footer.png'
 
 const metrics = [
   {
@@ -63,151 +66,190 @@ const journey = [
 ]
 
 export default function Impact() {
+  const [activeStep, setActiveStep] = useState(0)
+
+  const ActiveIcon = journey[activeStep].icon
+
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="bg-gray-950 text-white px-6 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-red-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <TrendingUp size={18} aria-hidden="true" />
-              COHORTS & IMPACT
+    <main className="impact-page">
+      {/* Hero */}
+      <section className="impact-hero">
+        <div className="impact-container impact-hero-layout">
+          <div className="impact-hero-content">
+            <div className="impact-label">
+              <TrendingUp size={17} />
+              <span>COHORTS &amp; IMPACT</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-              Creating opportunities. Building meaningful impact.
+            <h1>
+              Creating opportunities.
+              <span> Building meaningful impact.</span>
             </h1>
 
-            <p className="text-gray-300 max-w-2xl mt-6 text-base md:text-lg leading-8">
+            <p className="impact-hero-description">
               Discover the impact ICE Academy aims to create through
               learning, development, entrepreneurship and innovation.
             </p>
 
-            <Link
-              to="/programmes"
-              className="inline-flex items-center gap-2 mt-8 bg-red-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-gray-950"
-            >
-              Explore programmes
-              <ArrowRight size={18} />
-            </Link>
+            <div className="impact-hero-actions">
+              <Link to="/programmes" className="impact-button impact-button-primary">
+                Explore programmes
+                <ArrowRight size={17} />
+              </Link>
+            </div>
+          </div>
+
+          <div className="impact-hero-visual" aria-hidden="true">
+            <div className="impact-visual-circle impact-circle-one" />
+            <div className="impact-visual-circle impact-circle-two" />
+
+            <div className="impact-visual-card">
+              <div className="impact-visual-icon">
+                {/* ONLY THIS ONE CHANGED - cap to robot, and BIGGER */}
+                <img src={robotFooter} alt="ICE Academy robot" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+              </div>
+              <span className="impact-visual-small" style={{ fontSize: '14px', letterSpacing: '1.5px' }}>THE ICE ACADEMY VISION</span>
+              <strong style={{ fontSize: '22px', lineHeight: '1.3' }}>Learning today. Opportunities tomorrow.</strong>
+              <div className="impact-visual-line" />
+              <div className="impact-visual-footer" style={{ fontSize: '15px' }}>
+                <span>Learn</span>
+                <span>Grow</span>
+                <span>Innovate</span>
+              </div>
+            </div>
+
+            <div className="impact-visual-decoration">
+              <TrendingUp size={23} />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Impact Metrics */}
-      <section className="max-w-7xl mx-auto px-6 py-20 md:py-24">
-        <div className="max-w-2xl mb-12">
-          <p className="text-red-600 font-semibold tracking-wide">
-            OUR IMPACT
-          </p>
+      {/* Impact metrics */}
+      <section className="impact-section">
+        <div className="impact-container">
+          <div className="impact-section-heading">
+            <span className="impact-eyebrow">OUR IMPACT</span>
+            <h2>Progress that matters.</h2>
+            <p>
+              We believe meaningful impact starts with opportunities
+              that help people learn, grow and develop. Verified
+              performance information will be added when approved
+              and available.
+            </p>
+          </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-950 mt-3">
-            Progress that matters.
-          </h2>
+          <div className="impact-metrics-grid">
+            {metrics.map((metric, index) => {
+              const Icon = metric.icon
 
-          <p className="text-gray-600 mt-4 leading-7">
-            We believe meaningful impact starts with opportunities
-            that help people learn, grow and develop. Verified
-            performance information will be added when approved
-            and available.
-          </p>
+              return (
+                <article className="impact-metric-card" key={metric.label}>
+                  <div className="impact-metric-top">
+                    <div className="impact-metric-icon">
+                      <Icon size={23} />
+                    </div>
+                    <span className="impact-metric-number">
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  <p className="impact-metric-value">{metric.value}</p>
+                  <h3>{metric.label}</h3>
+                  <p className="impact-metric-description">
+                    {metric.description}
+                  </p>
+                </article>
+              )
+            })}
+          </div>
+
+          <div className="impact-verification-note">
+            <CheckCircle2 size={17} />
+            <span>
+              Performance figures will be published once verified.
+            </span>
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {metrics.map((metric) => {
-            const Icon = metric.icon
-
-            return (
-              <article
-                key={metric.label}
-                className="group bg-white border border-gray-200 rounded-xl p-7 hover:border-red-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="w-14 h-14 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
-                  <Icon size={27} aria-hidden="true" />
-                </div>
-
-                <p className="text-4xl md:text-5xl font-bold text-gray-950 mt-7">
-                  {metric.value}
-                </p>
-
-                <h3 className="font-bold text-gray-900 mt-3">
-                  {metric.label}
-                </h3>
-
-                <p className="text-sm text-gray-500 mt-3 leading-6">
-                  {metric.description}
-                </p>
-              </article>
-            )
-          })}
-        </div>
-
-        <p className="text-sm text-gray-500 mt-6 flex items-center gap-2">
-          <CheckCircle2 size={16} className="text-red-600" />
-          Performance figures will be published once verified.
-        </p>
       </section>
 
-      {/* Learning Journey */}
-      <section className="bg-gray-50 px-6 py-20 md:py-24">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
-            <p className="text-red-600 font-semibold tracking-wide">
-              THE LEARNING JOURNEY
-            </p>
+      {/* Learning journey */}
+      <section className="impact-journey-section">
+        <div className="impact-container impact-journey-layout">
+          <div className="impact-journey-intro">
+            <span className="impact-eyebrow">THE LEARNING JOURNEY</span>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-950 mt-3 leading-tight">
-              Every journey starts with an opportunity.
-            </h2>
+            <h2>Every journey starts with an opportunity.</h2>
 
-            <p className="text-gray-600 mt-5 leading-8">
+            <p>
               ICE Academy aims to create learning experiences that
               encourage people to develop skills, explore ideas and
               work towards their personal and professional goals.
             </p>
 
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 mt-7 text-red-600 font-semibold hover:text-red-700 transition"
-            >
+            <Link to="/about" className="impact-text-link">
               Learn more about us
-              <ArrowRight size={18} />
+              <ArrowRight size={17} />
             </Link>
+
+            <div className="impact-journey-highlight">
+              <span className="impact-highlight-icon">
+                <ActiveIcon size={23} />
+              </span>
+
+              <div>
+                <span className="impact-highlight-label">
+                  YOUR SELECTED STAGE
+                </span>
+                <h3>{journey[activeStep].title}</h3>
+                <p>{journey[activeStep].description}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-xl p-7 md:p-9 shadow-sm">
-            <div className="space-y-8">
+          <div className="impact-journey-card">
+            <div className="impact-journey-card-heading">
+              <div>
+                <span className="impact-eyebrow">YOUR PATHWAY</span>
+                <h3>Explore the journey</h3>
+              </div>
+              <span className="impact-journey-count">
+                0{activeStep + 1} / 04
+              </span>
+            </div>
+
+            <div className="impact-journey-steps">
               {journey.map((step, index) => {
                 const Icon = step.icon
+                const isActive = activeStep === index
 
                 return (
-                  <div key={step.title} className="flex items-start gap-5">
-                    <div className="relative shrink-0">
-                      <div className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-sm">
-                        <Icon size={22} aria-hidden="true" />
-                      </div>
+                  <button
+                    type="button"
+                    key={step.title}
+                    className={`impact-journey-step ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveStep(index)}
+                    aria-pressed={isActive}
+                  >
+                    <span className="impact-step-icon">
+                      <Icon size={21} />
+                    </span>
 
-                      {index !== journey.length - 1 && (
-                        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-red-100" />
-                      )}
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-red-600">
-                          STEP 0{index + 1}
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg font-bold text-gray-950 mt-1">
-                        {step.title}
-                      </h3>
-
-                      <p className="text-gray-600 text-sm mt-2 leading-6">
+                    <span className="impact-step-content">
+                      <span className="impact-step-number">
+                        STEP 0{index + 1}
+                      </span>
+                      <strong>{step.title}</strong>
+                      <span className="impact-step-description">
                         {step.description}
-                      </p>
-                    </div>
-                  </div>
+                      </span>
+                    </span>
+
+                    <ChevronRight
+                      size={19}
+                      className="impact-step-arrow"
+                    />
+                  </button>
                 )
               })}
             </div>
@@ -216,29 +258,20 @@ export default function Impact() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-red-600 text-white px-6 py-16 md:py-20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div className="max-w-2xl">
-            <p className="text-red-100 font-semibold mb-3">
-              BE PART OF THE JOURNEY
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Your next opportunity starts here.
-            </h2>
-
-            <p className="mt-4 text-red-100 leading-7">
+      <section className="impact-cta">
+        <div className="impact-container impact-cta-layout">
+          <div className="impact-cta-content">
+            <span className="impact-cta-eyebrow">BE PART OF THE JOURNEY</span>
+            <h2>Your next opportunity starts here.</h2>
+            <p>
               Connect with ICE Academy and discover how learning
               and development can support your future.
             </p>
           </div>
 
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center gap-2 bg-white text-red-600 px-7 py-4 rounded-md font-semibold hover:bg-gray-100 transition focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-600 whitespace-nowrap"
-          >
+          <Link to="/contact" className="impact-button impact-button-light">
             Contact us
-            <ArrowRight size={18} />
+            <ArrowRight size={17} />
           </Link>
         </div>
       </section>
