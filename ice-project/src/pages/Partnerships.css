@@ -223,4 +223,39 @@
   .partnerships-grid {
     grid-template-columns: 1fr;
   }
-}
+}/* Light Mode Overrides */
+.partnerships-page { background: #f9fafb; color: #111827; }
+.partnerships-hero { background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%); color: #111827; }
+.partnerships-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%); }
+.partnerships-hero-description { color: #4b5563; }
+.partnerships-section { border-bottom: 1px solid #e5e7eb; }
+.partnership-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.partnership-card h3 { color: #111827; }
+.partnership-card p { color: #4b5563; }
+.partnerships-cta { background: #ffffff; }
+.partnerships-cta h2 { color: #111827; }
+.partnerships-cta p { color: #4b5563; }
+/* Premium Cream Overrides */
+.partnerships-page { background: #fdfbf7; color: #1a1a1a; }
+.partnerships-hero { background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%); color: #1a1a1a; }
+.partnerships-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 70%); }
+.partnerships-hero-description { color: #4b5563; }
+.partnerships-section { border-bottom: 1px solid #e5e7eb; }
+.partnership-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+.partnership-card h3 { color: #1a1a1a; }
+.partnership-card p { color: #4b5563; }
+.partnerships-cta { background: #ffffff; }
+.partnerships-cta h2 { color: #1a1a1a; }
+.partnerships-cta p { color: #4b5563; }
+/* Hybrid Theme: Dark Hero, Light Body */
+.partnerships-page { background: #ffffff; color: #111827; }
+.partnerships-hero { background: linear-gradient(135deg, #0a0a0f 0%, #1a121a 100%) !important; color: #ffffff !important; }
+.partnerships-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%) !important; }
+.partnerships-hero-description { color: #c6c8d1 !important; }
+.partnerships-section { border-bottom: 1px solid #e5e7eb; }
+.partnership-card { background: #f9fafb; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.partnership-card h3 { color: #111827; }
+.partnership-card p { color: #4b5563; }
+.partnerships-cta { background: #f9fafb; }
+.partnerships-cta h2 { color: #111827; }
+.partnerships-cta p { color: #4b5563; }

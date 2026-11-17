@@ -181,4 +181,36 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-}
+}/* Light Mode Overrides */
+.contact-page { background: #f9fafb; color: #111827; }
+.contact-hero { background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%); color: #111827; }
+.contact-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%); }
+.contact-hero-description, .contact-info p { color: #4b5563; }
+.contact-info h2 { color: #111827; }
+.contact-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.contact-card h3 { color: #111827; }
+.contact-form-group label { color: #374151; }
+.contact-form-group input, .contact-form-group select, .contact-form-group textarea { background: #ffffff; border: 1px solid #d1d5db; color: #111827; }
+.contact-form-group input:focus, .contact-form-group select:focus, .contact-form-group textarea:focus { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1); }
+/* Premium Cream Overrides */
+.contact-page { background: #fdfbf7; color: #1a1a1a; } /* Warm off-white */
+.contact-hero { background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%); color: #1a1a1a; }
+.contact-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 70%); }
+.contact-hero-description, .contact-info p { color: #4b5563; }
+.contact-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+.contact-card h3 { color: #1a1a1a; }
+.contact-form-group label { color: #374151; }
+.contact-form-group input, .contact-form-group select, .contact-form-group textarea { background: #fdfbf7; border: 1px solid #d1d5db; color: #1a1a1a; }
+.contact-form-group input:focus, .contact-form-group select:focus, .contact-form-group textarea:focus { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1); }
+/* Hybrid Theme: Dark Hero, Light Body */
+.contact-page { background: #ffffff; color: #111827; }
+.contact-hero { background: linear-gradient(135deg, #0a0a0f 0%, #1a121a 100%) !important; color: #ffffff !important; }
+.contact-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%) !important; }
+.contact-hero-description { color: #c6c8d1 !important; }
+.contact-info p { color: #4b5563; }
+.contact-info h2 { color: #111827; }
+.contact-card { background: #f9fafb; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+.contact-card h3 { color: #111827; }
+.contact-form-group label { color: #374151; }
+.contact-form-group input, .contact-form-group select, .contact-form-group textarea { background: #ffffff; border: 1px solid #d1d5db; color: #111827; }
+.contact-form-group input:focus, .contact-form-group select:focus, .contact-form-group textarea:focus { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1); }

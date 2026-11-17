@@ -177,4 +177,55 @@
   .programmes-grid {
     grid-template-columns: 1fr;
   }
+}/* Light Mode Overrides */
+.programmes-page { background: #f9fafb; color: #111827; }
+.programmes-hero { background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%); color: #111827; }
+.programmes-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%); }
+.programmes-hero p { color: #4b5563; }
+.programmes-section { border-bottom: 1px solid #e5e7eb; }
+.programmes-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.programmes-card h3 { color: #111827; }
+.programmes-card p, .programmes-card li { color: #4b5563; }
+.programmes-cta { background: #ffffff; }
+.programmes-cta h2 { color: #111827; }
+.programmes-cta p { color: #4b5563; }
+/* Premium Cream Overrides */
+.programmes-page { background: #fdfbf7; color: #1a1a1a; }
+.programmes-hero { background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%); color: #1a1a1a; }
+.programmes-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 70%); }
+.programmes-hero p { color: #4b5563; }
+.programmes-section { border-bottom: 1px solid #e5e7eb; }
+.programmes-card { background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+.programmes-card h3 { color: #1a1a1a; }
+.programmes-card p, .programmes-card li { color: #4b5563; }
+.programmes-cta { background: #ffffff; }
+.programmes-cta h2 { color: #1a1a1a; }
+.programmes-cta p { color: #4b5563; }
+/* Hybrid Theme: Dark Hero, Light Body */
+.programmes-page { background: #ffffff; color: #111827; }
+.programmes-hero { background: linear-gradient(135deg, #0a0a0f 0%, #1a121a 100%) !important; color: #ffffff !important; }
+.programmes-hero::before { background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%) !important; }
+.programmes-hero p { color: #c6c8d1 !important; }
+.programmes-section { border-bottom: 1px solid #e5e7eb; }
+.programmes-card { background: #f9fafb; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.programmes-card h3 { color: #111827; }
+.programmes-card p, .programmes-card li { color: #4b5563; }
+.programmes-cta { background: #f9fafb; }
+.programmes-cta h2 { color: #111827; }
+.programmes-cta p { color: #4b5563; }
+/* Fix text contrast on Programmes page */
+.programmes-card p,
+.programmes-card li {
+  color: #374151 !important; /* Crisp dark gray for readability */
+  font-weight: 500;
+}
+
+.programmes-card h4 {
+  color: #6b7280 !important; /* Slightly lighter for the "Areas of Focus" heading */
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.programmes-hero p {
+  color: #c6c8d1 !important; /* Keep the hero text light since the hero is dark */
 }
