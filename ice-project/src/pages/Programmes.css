@@ -1,29 +1,180 @@
-﻿.programmes-page { width: 100%; background: #0a0a0f; color: #ffffff; min-height: 100vh; }
-.programmes-container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-.programmes-hero { background: linear-gradient(135deg, #0a0a0f 0%, #1a121a 100%); padding: 120px 0 100px; position: relative; overflow: hidden; }
-.programmes-hero::before { content: ''; position: absolute; top: -20%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-.programmes-eyebrow { color: #ff7777; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: block; }
-.programmes-hero h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; line-height: 1.1; max-width: 800px; }
-.programmes-hero p { color: #c6c8d1; max-width: 600px; margin-top: 24px; font-size: 18px; line-height: 1.8; }
-.programmes-section { padding: 90px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.programmes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.programmes-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 40px; transition: all 0.3s ease; }
-.programmes-card:hover { border-color: rgba(248, 113, 113, 0.4); background: rgba(255, 255, 255, 0.05); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15); }
-.programmes-card h3 { font-size: 24px; font-weight: 800; color: #ffffff; margin-top: 20px; }
-.programmes-card p { color: #c6c8d1; line-height: 1.8; margin-top: 12px; }
-.programmes-card ul { margin-top: 20px; list-style: none; padding: 0; }
-.programmes-card li { color: #c6c8d1; display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-.programmes-card li::before { content: ''; width: 6px; height: 6px; background: #ff7777; border-radius: 50%; }
-.programmes-cta { background: #0a0a0f; padding: 100px 0; text-align: center; }
-.programmes-cta h2 { font-size: 42px; font-weight: 800; }
-.programmes-cta p { color: #c6c8d1; margin-top: 16px; font-size: 18px; }
-.programmes-btn { display: inline-flex; align-items: center; gap: 10px; background: #dc2626; color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 32px; transition: 0.2s; }
-.programmes-btn:hover { background: #b91c1c; }
-@media (max-width: 900px) { .programmes-grid { grid-template-columns: 1fr; } }
-/* Premium Red Glow for Programmes */
+﻿/* =========================================
+   Programmes Page
+   ========================================= */
+
+.programmes-page {
+  width: 100%;
+  background: #0a0a0f;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.programmes-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* -----------------------------------------
+   Hero Section
+   ----------------------------------------- */
+
+.programmes-hero {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a121a 100%);
+  padding: 120px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.programmes-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.programmes-eyebrow {
+  color: #ff7777;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.programmes-hero h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.1;
+  max-width: 800px;
+}
+
+.programmes-hero p {
+  color: #c6c8d1;
+  max-width: 600px;
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* -----------------------------------------
+   Main Section & Cards
+   ----------------------------------------- */
+
+.programmes-section {
+  padding: 90px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.programmes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.programmes-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+/* Premium Red Glow on Hover */
 .programmes-card:hover {
   border-color: rgba(248, 113, 113, 0.4);
   background: rgba(255, 255, 255, 0.05);
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15);
+}
+
+.programmes-card h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.programmes-card p {
+  color: #c6c8d1;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+.programmes-card ul {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.programmes-card li {
+  color: #c6c8d1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.programmes-card li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #ff7777;
+  border-radius: 50%;
+}
+
+/* -----------------------------------------
+   CTA Section
+   ----------------------------------------- */
+
+.programmes-cta {
+  background: #0a0a0f;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.programmes-cta h2 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.programmes-cta p {
+  color: #c6c8d1;
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.programmes-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #dc2626;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 32px;
+  transition: 0.2s;
+}
+
+.programmes-btn:hover {
+  background: #b91c1c;
+}
+
+/* -----------------------------------------
+   Responsive
+   ----------------------------------------- */
+
+@media (max-width: 900px) {
+  .programmes-grid {
+    grid-template-columns: 1fr;
+  }
 }
