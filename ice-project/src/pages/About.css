@@ -361,3 +361,107 @@
   color: #ffffff !important;
   transform: scale(1.1) !important;
 }
+/* Hybrid Theme for About Page: Dark Hero, Light Body */
+
+/* 1. Set the page and sections to light mode */
+.about-page { background: #ffffff !important; color: #111827 !important; }
+.about-section { background: #ffffff !important; border-bottom: 1px solid #e5e7eb !important; padding: 90px 0 !important; }
+.about-vision-section { background: #f9fafb !important; }
+
+/* 2. Keep the Hero dark */
+.about-hero { 
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a121a 100%) !important; 
+  color: #ffffff !important; 
+  padding: 120px 0 100px !important;
+  position: relative;
+  overflow: hidden;
+}
+.about-hero::before { 
+  content: ''; 
+  position: absolute; 
+  top: -20%; 
+  left: -10%; 
+  width: 600px; 
+  height: 600px; 
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%); 
+  border-radius: 50%; 
+  pointer-events: none; 
+}
+
+/* 3. Hero Text (Light) */
+.about-hero h1 { color: #ffffff !important; }
+.about-hero-description { color: #c6c8d1 !important; }
+.about-eyebrow { color: #ff7777 !important; }
+
+/* 4. Body Text (Dark) */
+.about-who-content h2, 
+.about-vision-card h2, 
+.about-values-intro h2, 
+.about-value-card h3,
+.about-cta-content h2 { 
+  color: #111827 !important; 
+}
+
+.about-who-content p, 
+.about-vision-card p, 
+.about-values-intro p, 
+.about-value-card p,
+.about-cta-content p { 
+  color: #4b5563 !important; 
+}
+
+.about-label { color: #dc2626 !important; }
+
+/* 5. Fix the Cards for light mode */
+.about-vision-card, 
+.about-value-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+.about-value-card:hover {
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15) !important;
+}
+
+.about-value-icon {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+/* 6. Fix the CTA at the bottom */
+.about-cta {
+  background: #f9fafb !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+/* Premium Red Glow for Vision and Mission Cards */
+.about-vision-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+}
+
+.about-vision-card:hover {
+  border-color: rgba(248, 113, 113, 0.4) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15) !important;
+}
+
+/* Icon styling */
+.about-vision-icon {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+  transition: all 0.3s ease !important;
+}
+
+.about-vision-card:hover .about-vision-icon {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
+
+/* Fix text colors inside the cards */
+.about-vision-card h2 { color: #111827 !important; }
+.about-vision-card p { color: #4b5563 !important; }

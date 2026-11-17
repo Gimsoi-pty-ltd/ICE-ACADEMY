@@ -308,3 +308,59 @@
   .enterprise-cta-content { flex-direction: column; align-items: flex-start; }
   .enterprise-cta .enterprise-btn { width: 100%; }
 }
+/* Soft Green Background Override */
+.enterprise-page, 
+.enterprise-section, 
+.enterprise-cta {
+  background: #eefcf4 !important;
+}
+/* Fix text colors for Enterprise on light green background */
+.enterprise-hero h1,
+.enterprise-section-heading h2,
+.enterprise-pathway-card h3,
+.enterprise-cta h2 {
+  color: #064e3b !important; /* Dark forest green for headings */
+}
+
+.enterprise-hero p,
+.enterprise-section-heading p,
+.enterprise-pathway-card p,
+.enterprise-cta p {
+  color: #4b5563 !important; /* Medium gray for body text */
+}
+
+.enterprise-pathway-number {
+  color: rgba(6, 78, 59, 0.3) !important; /* Faded dark green for the numbers */
+}
+/* 1. Fix Hero Text (It's on a dark background, so it must be light) */
+.enterprise-hero h1,
+.enterprise-hero .enterprise-hero-description,
+.enterprise-hero p {
+  color: #ffffff !important;
+}
+
+.enterprise-hero .enterprise-eyebrow {
+  color: #34d399 !important; /* Keep the bright neon green for the eyebrow */
+}
+
+/* 2. Fix the Cards (Make them pop against the light green background) */
+.enterprise-pathway-card {
+  border: 1px solid #a7f3d0 !important; /* Soft mint green border */
+  box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.1), 0 2px 4px -1px rgba(5, 150, 105, 0.06) !important;
+  border-left: 4px solid #10b981 !important; /* Thick green accent on the left */
+}
+
+.enterprise-pathway-card:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.2) !important;
+  background: #ffffff !important; /* Ensure it stays white on hover */
+}
+
+/* 3. Fix the Section Heading (It's on the light green background, so it needs dark text) */
+.enterprise-section-heading h2 {
+  color: #064e3b !important;
+}
+
+.enterprise-section-heading p {
+  color: #4b5563 !important;
+}
