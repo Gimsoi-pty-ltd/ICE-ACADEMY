@@ -229,3 +229,14 @@
 .programmes-hero p {
   color: #c6c8d1 !important; /* Keep the hero text light since the hero is dark */
 }
+/* Icon styling for Programmes cards */
+.programmes-card svg {
+  color: #111827; /* Default black/dark gray */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect: Turn red and scale up slightly */
+.programmes-card:hover svg {
+  color: #dc2626 !important; /* The signature red */
+  transform: scale(1.15);
+}
