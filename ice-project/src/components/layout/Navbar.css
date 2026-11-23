@@ -63,14 +63,27 @@
 
 /* Brand typography */
 
+
 .ice-navbar-brand-name {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 3px;
-  line-height: 1.05;
-  white-space: nowrap;
+  align-items: flex-start;
 }
+
+.ice-brand-powered {
+  font-size: 9px;
+  font-weight: 400;
+  color: #9CA3AF;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+.ice-brand-powered strong {
+  color: #171923;
+  font-weight: 600;
+}
+
 
 /* INDUSTRIAL */
 
