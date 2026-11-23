@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-   base: '/ICE-PROJECT/',
+  base: '/ICE-PROJECT/',
   plugins: [
     react(),
     tailwindcss(),
