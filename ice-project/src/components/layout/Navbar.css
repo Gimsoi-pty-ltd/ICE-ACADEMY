@@ -107,6 +107,22 @@
   line-height: 1.4;
 }
 
+.ice-brand-powered {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: #888;
+  margin-top: 2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.ice-brand-powered strong {
+  font-weight: 600;
+  color: #555;
+}
+
 /* ==================================
    DESKTOP NAVIGATION
 ================================== */
