@@ -67,6 +67,9 @@ export default function Navbar() {
     <span className="ice-brand-bottom">
       <strong>ACADEMY</strong>
     </span>
+    <span className="ice-brand-powered">
+      Powered by <strong>NextGen Digi</strong>
+</span>
   </span>
 </Link>
 
