@@ -35,7 +35,7 @@ function NotFound() {
           Sorry, the page you're looking for doesn't exist
           or may have been moved.
         </p>
-        <a href="/" className="not-found-button">
+        <a href="/ICE-PROJECT/" className="not-found-button">
           Back to homepage
         </a>
       </div>
