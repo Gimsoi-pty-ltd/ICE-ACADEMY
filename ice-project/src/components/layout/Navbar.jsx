@@ -60,10 +60,6 @@ export default function Navbar() {
       <strong>Industrial</strong>
     </span>
 
-    <span className="ice-brand-middle">
-      Computing Engineering
-    </span>
-
     <span className="ice-brand-bottom">
       <strong>ACADEMY</strong>
     </span>
